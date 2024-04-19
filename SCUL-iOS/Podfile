@@ -1,0 +1,17 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'SCUL-iOS' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for SCUL-iOS
+  pod 'Alamofire'
+  pod 'Kingfisher'
+  pod 'Moya'
+  pod 'RxSwift'
+  pod 'RxFlow'
+  pod 'SnapKit'
+  pod 'Then'
+  pod 'KeychainSwift'
+end

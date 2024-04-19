@@ -7,23 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B08C56A9F29D5E8E140B592 /* Pods_SCUL_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4225D6FFE91DFDE37E9C07C3 /* Pods_SCUL_iOS.framework */; };
 		4F3150292BCADEB50040EEFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3150282BCADEB50040EEFD /* AppDelegate.swift */; };
 		4F31502B2BCADEB50040EEFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F31502A2BCADEB50040EEFD /* SceneDelegate.swift */; };
 		4F31502D2BCADEB50040EEFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F31502C2BCADEB50040EEFD /* ViewController.swift */; };
-		4F3150302BCADEB50040EEFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F31502E2BCADEB50040EEFD /* Main.storyboard */; };
 		4F3150322BCADEB60040EEFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F3150312BCADEB60040EEFD /* Assets.xcassets */; };
 		4F3150352BCADEB60040EEFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F3150332BCADEB60040EEFD /* LaunchScreen.storyboard */; };
+		4F3150812BD2C1090040EEFD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3150802BD2C1090040EEFD /* BaseViewController.swift */; };
+		4F3150832BD2C13D0040EEFD /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3150822BD2C13D0040EEFD /* BaseViewModel.swift */; };
+		4F3150852BD2C20A0040EEFD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3150842BD2C20A0040EEFD /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4225D6FFE91DFDE37E9C07C3 /* Pods_SCUL_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCUL_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F3150252BCADEB50040EEFD /* SCUL-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SCUL-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F3150282BCADEB50040EEFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F31502A2BCADEB50040EEFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4F31502C2BCADEB50040EEFD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4F31502F2BCADEB50040EEFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F3150312BCADEB60040EEFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F3150342BCADEB60040EEFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F3150362BCADEB60040EEFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F3150802BD2C1090040EEFD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		4F3150822BD2C13D0040EEFD /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		4F3150842BD2C20A0040EEFD /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		65C91DB2221BD0CC812E0F94 /* Pods-SCUL-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCUL-iOS.debug.xcconfig"; path = "Target Support Files/Pods-SCUL-iOS/Pods-SCUL-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		6A48DE9F69E6CD0DD3506B3F /* Pods-SCUL-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCUL-iOS.release.xcconfig"; path = "Target Support Files/Pods-SCUL-iOS/Pods-SCUL-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B08C56A9F29D5E8E140B592 /* Pods_SCUL_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +51,8 @@
 			children = (
 				4F3150272BCADEB50040EEFD /* SCUL-iOS */,
 				4F3150262BCADEB50040EEFD /* Products */,
+				E6D7FBBBBF56802452EBB33F /* Pods */,
+				8F2D5447901A5AA2E1E455C8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +67,90 @@
 		4F3150272BCADEB50040EEFD /* SCUL-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				4F3150282BCADEB50040EEFD /* AppDelegate.swift */,
-				4F31502A2BCADEB50040EEFD /* SceneDelegate.swift */,
-				4F31502C2BCADEB50040EEFD /* ViewController.swift */,
-				4F31502E2BCADEB50040EEFD /* Main.storyboard */,
-				4F3150312BCADEB60040EEFD /* Assets.xcassets */,
-				4F3150332BCADEB60040EEFD /* LaunchScreen.storyboard */,
-				4F3150362BCADEB60040EEFD /* Info.plist */,
+				4F31507E2BD2C0320040EEFD /* Project */,
+				4F31507C2BD2BF630040EEFD /* Presentation */,
+				4F31507D2BD2BF6F0040EEFD /* Modules */,
 			);
 			path = "SCUL-iOS";
+			sourceTree = "<group>";
+		};
+		4F3150752BD2BD150040EEFD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4F3150312BCADEB60040EEFD /* Assets.xcassets */,
+				4F3150332BCADEB60040EEFD /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4F3150762BD2BD310040EEFD /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4F3150282BCADEB50040EEFD /* AppDelegate.swift */,
+				4F31502A2BCADEB50040EEFD /* SceneDelegate.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		4F3150772BD2BE0F0040EEFD /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				4F3150362BCADEB60040EEFD /* Info.plist */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		4F31507C2BD2BF630040EEFD /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				4F31507F2BD2C0E50040EEFD /* Base */,
+				4F31502C2BCADEB50040EEFD /* ViewController.swift */,
+				4F3150842BD2C20A0040EEFD /* ViewModel.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		4F31507D2BD2BF6F0040EEFD /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		4F31507E2BD2C0320040EEFD /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				4F3150762BD2BD310040EEFD /* Sources */,
+				4F3150752BD2BD150040EEFD /* Resources */,
+				4F3150772BD2BE0F0040EEFD /* Support */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		4F31507F2BD2C0E50040EEFD /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				4F3150802BD2C1090040EEFD /* BaseViewController.swift */,
+				4F3150822BD2C13D0040EEFD /* BaseViewModel.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		8F2D5447901A5AA2E1E455C8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4225D6FFE91DFDE37E9C07C3 /* Pods_SCUL_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E6D7FBBBBF56802452EBB33F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				65C91DB2221BD0CC812E0F94 /* Pods-SCUL-iOS.debug.xcconfig */,
+				6A48DE9F69E6CD0DD3506B3F /* Pods-SCUL-iOS.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +160,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4F3150392BCADEB60040EEFD /* Build configuration list for PBXNativeTarget "SCUL-iOS" */;
 			buildPhases = (
+				337A53AF7C4ECA38691CFF74 /* [CP] Check Pods Manifest.lock */,
 				4F3150212BCADEB50040EEFD /* Sources */,
 				4F3150222BCADEB50040EEFD /* Frameworks */,
 				4F3150232BCADEB50040EEFD /* Resources */,
+				C4A0D6A74FF2BBC25B856CF7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,11 +215,52 @@
 			files = (
 				4F3150352BCADEB60040EEFD /* LaunchScreen.storyboard in Resources */,
 				4F3150322BCADEB60040EEFD /* Assets.xcassets in Resources */,
-				4F3150302BCADEB50040EEFD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		337A53AF7C4ECA38691CFF74 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SCUL-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4A0D6A74FF2BBC25B856CF7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SCUL-iOS/Pods-SCUL-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SCUL-iOS/Pods-SCUL-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SCUL-iOS/Pods-SCUL-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4F3150212BCADEB50040EEFD /* Sources */ = {
@@ -139,7 +268,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F31502D2BCADEB50040EEFD /* ViewController.swift in Sources */,
+				4F3150832BD2C13D0040EEFD /* BaseViewModel.swift in Sources */,
+				4F3150812BD2C1090040EEFD /* BaseViewController.swift in Sources */,
 				4F3150292BCADEB50040EEFD /* AppDelegate.swift in Sources */,
+				4F3150852BD2C20A0040EEFD /* ViewModel.swift in Sources */,
 				4F31502B2BCADEB50040EEFD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +279,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4F31502E2BCADEB50040EEFD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4F31502F2BCADEB50040EEFD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4F3150332BCADEB60040EEFD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -203,7 +327,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -266,7 +390,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -287,16 +411,16 @@
 		};
 		4F31503A2BCADEB60040EEFD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65C91DB2221BD0CC812E0F94 /* Pods-SCUL-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "SCUL-iOS/Info.plist";
+				INFOPLIST_FILE = "SCUL-iOS/Project/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -314,16 +438,16 @@
 		};
 		4F31503B2BCADEB60040EEFD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A48DE9F69E6CD0DD3506B3F /* Pods-SCUL-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "SCUL-iOS/Info.plist";
+				INFOPLIST_FILE = "SCUL-iOS/Project/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
