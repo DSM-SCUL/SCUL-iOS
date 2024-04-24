@@ -45,10 +45,10 @@
 		4F3838E92BD88814004C3615 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3838E82BD88814004C3615 /* MyPageViewModel.swift */; };
 		4F3838EC2BD8884B004C3615 /* MainDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3838EB2BD8884B004C3615 /* MainDetailViewController.swift */; };
 		4F3838EE2BD88854004C3615 /* MainDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3838ED2BD88854004C3615 /* MainDetailViewModel.swift */; };
-		4F3838F12BD88883004C3615 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3838F02BD88883004C3615 /* ReviewViewController.swift */; };
 		4F3838F32BD8888D004C3615 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3838F22BD8888D004C3615 /* ReviewViewModel.swift */; };
 		4F3838F52BD88EC6004C3615 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3838F42BD88EC6004C3615 /* BaseViewController.swift */; };
 		4F3838F72BD88ECD004C3615 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3838F62BD88ECD004C3615 /* BaseViewModel.swift */; };
+		4F3838F92BD892DD004C3615 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3838F82BD892DD004C3615 /* ReviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,10 +92,10 @@
 		4F3838E82BD88814004C3615 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		4F3838EB2BD8884B004C3615 /* MainDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDetailViewController.swift; sourceTree = "<group>"; };
 		4F3838ED2BD88854004C3615 /* MainDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDetailViewModel.swift; sourceTree = "<group>"; };
-		4F3838F02BD88883004C3615 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReviewViewController.swift; path = "SCUL-iOS/Project/Presentation/Base/ReviewViewController.swift"; sourceTree = SOURCE_ROOT; };
 		4F3838F22BD8888D004C3615 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		4F3838F42BD88EC6004C3615 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		4F3838F62BD88ECD004C3615 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		4F3838F82BD892DD004C3615 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		65C91DB2221BD0CC812E0F94 /* Pods-SCUL-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCUL-iOS.debug.xcconfig"; path = "Target Support Files/Pods-SCUL-iOS/Pods-SCUL-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6A48DE9F69E6CD0DD3506B3F /* Pods-SCUL-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCUL-iOS.release.xcconfig"; path = "Target Support Files/Pods-SCUL-iOS/Pods-SCUL-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -397,7 +397,7 @@
 		4F3838EF2BD88877004C3615 /* Review */ = {
 			isa = PBXGroup;
 			children = (
-				4F3838F02BD88883004C3615 /* ReviewViewController.swift */,
+				4F3838F82BD892DD004C3615 /* ReviewViewController.swift */,
 				4F3838F22BD8888D004C3615 /* ReviewViewModel.swift */,
 			);
 			path = Review;
@@ -546,7 +546,6 @@
 			files = (
 				4F3838E72BD8880D004C3615 /* MyPageViewController.swift in Sources */,
 				4F3838DD2BD88713004C3615 /* MainViewController.swift in Sources */,
-				4F3838F12BD88883004C3615 /* ReviewViewController.swift in Sources */,
 				4F31516B2BD44D880040EEFD /* UIFont+Label.swift in Sources */,
 				4F3151672BD44CBA0040EEFD /* UIFont+Body.swift in Sources */,
 				4F3838F52BD88EC6004C3615 /* BaseViewController.swift in Sources */,
@@ -573,6 +572,7 @@
 				4F31502B2BCADEB50040EEFD /* SceneDelegate.swift in Sources */,
 				4F3838CE2BD884DB004C3615 /* SplashViewController.swift in Sources */,
 				4F3838DF2BD8871A004C3615 /* MainViewModel.swift in Sources */,
+				4F3838F92BD892DD004C3615 /* ReviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
