@@ -12,8 +12,6 @@
 		4F31502B2BCADEB50040EEFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F31502A2BCADEB50040EEFD /* SceneDelegate.swift */; };
 		4F3150322BCADEB60040EEFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F3150312BCADEB60040EEFD /* Assets.xcassets */; };
 		4F3150352BCADEB60040EEFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F3150332BCADEB60040EEFD /* LaunchScreen.storyboard */; };
-		4F3150812BD2C1090040EEFD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3150802BD2C1090040EEFD /* BaseViewController.swift */; };
-		4F3150832BD2C13D0040EEFD /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3150822BD2C13D0040EEFD /* BaseViewModel.swift */; };
 		4F3151472BD2E3860040EEFD /* WantedSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F3151402BD2E3860040EEFD /* WantedSans-Bold.otf */; };
 		4F3151482BD2E3860040EEFD /* WantedSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F3151412BD2E3860040EEFD /* WantedSans-Medium.otf */; };
 		4F3151492BD2E3860040EEFD /* WantedSans-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F3151422BD2E3860040EEFD /* WantedSans-Black.otf */; };
@@ -49,6 +47,8 @@
 		4F3838EE2BD88854004C3615 /* MainDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3838ED2BD88854004C3615 /* MainDetailViewModel.swift */; };
 		4F3838F12BD88883004C3615 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3838F02BD88883004C3615 /* ReviewViewController.swift */; };
 		4F3838F32BD8888D004C3615 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3838F22BD8888D004C3615 /* ReviewViewModel.swift */; };
+		4F3838F52BD88EC6004C3615 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3838F42BD88EC6004C3615 /* BaseViewController.swift */; };
+		4F3838F72BD88ECD004C3615 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3838F62BD88ECD004C3615 /* BaseViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,8 +59,6 @@
 		4F3150312BCADEB60040EEFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F3150342BCADEB60040EEFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F3150362BCADEB60040EEFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4F3150802BD2C1090040EEFD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		4F3150822BD2C13D0040EEFD /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		4F3151402BD2E3860040EEFD /* WantedSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Bold.otf"; sourceTree = "<group>"; };
 		4F3151412BD2E3860040EEFD /* WantedSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Medium.otf"; sourceTree = "<group>"; };
 		4F3151422BD2E3860040EEFD /* WantedSans-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Black.otf"; sourceTree = "<group>"; };
@@ -96,6 +94,8 @@
 		4F3838ED2BD88854004C3615 /* MainDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDetailViewModel.swift; sourceTree = "<group>"; };
 		4F3838F02BD88883004C3615 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReviewViewController.swift; path = "SCUL-iOS/Project/Presentation/Base/ReviewViewController.swift"; sourceTree = SOURCE_ROOT; };
 		4F3838F22BD8888D004C3615 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
+		4F3838F42BD88EC6004C3615 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		4F3838F62BD88ECD004C3615 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		65C91DB2221BD0CC812E0F94 /* Pods-SCUL-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCUL-iOS.debug.xcconfig"; path = "Target Support Files/Pods-SCUL-iOS/Pods-SCUL-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6A48DE9F69E6CD0DD3506B3F /* Pods-SCUL-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCUL-iOS.release.xcconfig"; path = "Target Support Files/Pods-SCUL-iOS/Pods-SCUL-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,7 +167,6 @@
 		4F31507C2BD2BF630040EEFD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				4F3838EF2BD88877004C3615 /* Review */,
 				4F31507F2BD2C0E50040EEFD /* Base */,
 				4F3838CC2BD884C5004C3615 /* Splash */,
 				4F3838D12BD88660004C3615 /* Login */,
@@ -176,6 +175,7 @@
 				4F3838EA2BD8883F004C3615 /* MainDetail */,
 				4F3838E02BD887CD004C3615 /* Search */,
 				4F3838E52BD88803004C3615 /* MyPage */,
+				4F3838EF2BD88877004C3615 /* Review */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -201,8 +201,8 @@
 		4F31507F2BD2C0E50040EEFD /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				4F3150802BD2C1090040EEFD /* BaseViewController.swift */,
-				4F3150822BD2C13D0040EEFD /* BaseViewModel.swift */,
+				4F3838F42BD88EC6004C3615 /* BaseViewController.swift */,
+				4F3838F62BD88ECD004C3615 /* BaseViewModel.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -549,13 +549,12 @@
 				4F3838F12BD88883004C3615 /* ReviewViewController.swift in Sources */,
 				4F31516B2BD44D880040EEFD /* UIFont+Label.swift in Sources */,
 				4F3151672BD44CBA0040EEFD /* UIFont+Body.swift in Sources */,
+				4F3838F52BD88EC6004C3615 /* BaseViewController.swift in Sources */,
 				4F3151652BD44B6D0040EEFD /* UIFont+SB.swift in Sources */,
 				4F31516D2BD44DBD0040EEFD /* UIFont+Button.swift in Sources */,
-				4F3150832BD2C13D0040EEFD /* BaseViewModel.swift in Sources */,
 				4F3151692BD44CF20040EEFD /* UIFont+Caption.swift in Sources */,
 				4F3838DA2BD886B9004C3615 /* SignupViewModel.swift in Sources */,
 				4F3838C92BD882CA004C3615 /* UIColor + GrayScale.swift in Sources */,
-				4F3150812BD2C1090040EEFD /* BaseViewController.swift in Sources */,
 				4F3838D82BD886AF004C3615 /* SignupViewController.swift in Sources */,
 				4F3838D52BD88686004C3615 /* LoginViewModel.swift in Sources */,
 				4F3838E92BD88814004C3615 /* MyPageViewModel.swift in Sources */,
@@ -568,6 +567,7 @@
 				4F3838E42BD887E1004C3615 /* SearchViewModel.swift in Sources */,
 				4F3838D32BD88671004C3615 /* LoginViewController.swift in Sources */,
 				4F3838C62BD881E3004C3615 /* UIImage.swift in Sources */,
+				4F3838F72BD88ECD004C3615 /* BaseViewModel.swift in Sources */,
 				4F3838F32BD8888D004C3615 /* ReviewViewModel.swift in Sources */,
 				4F3838EC2BD8884B004C3615 /* MainDetailViewController.swift in Sources */,
 				4F31502B2BCADEB50040EEFD /* SceneDelegate.swift in Sources */,
