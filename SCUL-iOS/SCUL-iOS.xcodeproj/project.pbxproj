@@ -16,20 +16,6 @@
 		4F3150812BD2C1090040EEFD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3150802BD2C1090040EEFD /* BaseViewController.swift */; };
 		4F3150832BD2C13D0040EEFD /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3150822BD2C13D0040EEFD /* BaseViewModel.swift */; };
 		4F3150852BD2C20A0040EEFD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3150842BD2C20A0040EEFD /* ViewModel.swift */; };
-		4F3151112BD2DFB20040EEFD /* WantedSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F31510A2BD2DFB20040EEFD /* WantedSans-Bold.otf */; };
-		4F3151122BD2DFB20040EEFD /* WantedSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F31510B2BD2DFB20040EEFD /* WantedSans-Medium.otf */; };
-		4F3151132BD2DFB20040EEFD /* WantedSans-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F31510C2BD2DFB20040EEFD /* WantedSans-Black.otf */; };
-		4F3151142BD2DFB20040EEFD /* WantedSans-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F31510D2BD2DFB20040EEFD /* WantedSans-SemiBold.otf */; };
-		4F3151152BD2DFB20040EEFD /* WantedSans-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F31510E2BD2DFB20040EEFD /* WantedSans-ExtraBold.otf */; };
-		4F3151162BD2DFB20040EEFD /* WantedSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F31510F2BD2DFB20040EEFD /* WantedSans-Regular.otf */; };
-		4F3151172BD2DFB20040EEFD /* WantedSans-ExtraBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F3151102BD2DFB20040EEFD /* WantedSans-ExtraBlack.otf */; };
-		4F31512F2BD2E1EB0040EEFD /* WantedSansStd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F3151282BD2E1EA0040EEFD /* WantedSansStd-Medium.otf */; };
-		4F3151302BD2E1EB0040EEFD /* WantedSansStd-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F3151292BD2E1EA0040EEFD /* WantedSansStd-ExtraBold.otf */; };
-		4F3151312BD2E1EB0040EEFD /* WantedSansStd-ExtraBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F31512A2BD2E1EA0040EEFD /* WantedSansStd-ExtraBlack.otf */; };
-		4F3151322BD2E1EB0040EEFD /* WantedSansStd-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F31512B2BD2E1EA0040EEFD /* WantedSansStd-Black.otf */; };
-		4F3151332BD2E1EB0040EEFD /* WantedSansStd-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F31512C2BD2E1EA0040EEFD /* WantedSansStd-Regular.otf */; };
-		4F3151342BD2E1EB0040EEFD /* WantedSansStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F31512D2BD2E1EA0040EEFD /* WantedSansStd-Bold.otf */; };
-		4F3151352BD2E1EB0040EEFD /* WantedSansStd-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F31512E2BD2E1EA0040EEFD /* WantedSansStd-SemiBold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,20 +30,6 @@
 		4F3150802BD2C1090040EEFD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		4F3150822BD2C13D0040EEFD /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		4F3150842BD2C20A0040EEFD /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		4F31510A2BD2DFB20040EEFD /* WantedSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Bold.otf"; sourceTree = "<group>"; };
-		4F31510B2BD2DFB20040EEFD /* WantedSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Medium.otf"; sourceTree = "<group>"; };
-		4F31510C2BD2DFB20040EEFD /* WantedSans-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Black.otf"; sourceTree = "<group>"; };
-		4F31510D2BD2DFB20040EEFD /* WantedSans-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-SemiBold.otf"; sourceTree = "<group>"; };
-		4F31510E2BD2DFB20040EEFD /* WantedSans-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-ExtraBold.otf"; sourceTree = "<group>"; };
-		4F31510F2BD2DFB20040EEFD /* WantedSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Regular.otf"; sourceTree = "<group>"; };
-		4F3151102BD2DFB20040EEFD /* WantedSans-ExtraBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-ExtraBlack.otf"; sourceTree = "<group>"; };
-		4F3151282BD2E1EA0040EEFD /* WantedSansStd-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSansStd-Medium.otf"; sourceTree = "<group>"; };
-		4F3151292BD2E1EA0040EEFD /* WantedSansStd-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSansStd-ExtraBold.otf"; sourceTree = "<group>"; };
-		4F31512A2BD2E1EA0040EEFD /* WantedSansStd-ExtraBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSansStd-ExtraBlack.otf"; sourceTree = "<group>"; };
-		4F31512B2BD2E1EA0040EEFD /* WantedSansStd-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSansStd-Black.otf"; sourceTree = "<group>"; };
-		4F31512C2BD2E1EA0040EEFD /* WantedSansStd-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSansStd-Regular.otf"; sourceTree = "<group>"; };
-		4F31512D2BD2E1EA0040EEFD /* WantedSansStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSansStd-Bold.otf"; sourceTree = "<group>"; };
-		4F31512E2BD2E1EA0040EEFD /* WantedSansStd-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSansStd-SemiBold.otf"; sourceTree = "<group>"; };
 		65C91DB2221BD0CC812E0F94 /* Pods-SCUL-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCUL-iOS.debug.xcconfig"; path = "Target Support Files/Pods-SCUL-iOS/Pods-SCUL-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6A48DE9F69E6CD0DD3506B3F /* Pods-SCUL-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCUL-iOS.release.xcconfig"; path = "Target Support Files/Pods-SCUL-iOS/Pods-SCUL-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +68,8 @@
 			isa = PBXGroup;
 			children = (
 				4F31507E2BD2C0320040EEFD /* Project */,
+				4F31507C2BD2BF630040EEFD /* Presentation */,
+				4F31507D2BD2BF6F0040EEFD /* Modules */,
 			);
 			path = "SCUL-iOS";
 			sourceTree = "<group>";
@@ -139,7 +113,6 @@
 		4F31507D2BD2BF6F0040EEFD /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				4F3150862BD2D9050040EEFD /* DesignSystem */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -147,9 +120,9 @@
 		4F31507E2BD2C0320040EEFD /* Project */ = {
 			isa = PBXGroup;
 			children = (
-				4F3150C92BD2DB820040EEFD /* App */,
-				4F31507C2BD2BF630040EEFD /* Presentation */,
-				4F31507D2BD2BF6F0040EEFD /* Modules */,
+				4F3150762BD2BD310040EEFD /* Sources */,
+				4F3150752BD2BD150040EEFD /* Resources */,
+				4F3150772BD2BE0F0040EEFD /* Support */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -161,78 +134,6 @@
 				4F3150822BD2C13D0040EEFD /* BaseViewModel.swift */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		4F3150862BD2D9050040EEFD /* DesignSystem */ = {
-			isa = PBXGroup;
-			children = (
-				4F3150872BD2D9400040EEFD /* Project */,
-			);
-			path = DesignSystem;
-			sourceTree = "<group>";
-		};
-		4F3150872BD2D9400040EEFD /* Project */ = {
-			isa = PBXGroup;
-			children = (
-				4F3150882BD2D9500040EEFD /* Resources */,
-			);
-			path = Project;
-			sourceTree = "<group>";
-		};
-		4F3150882BD2D9500040EEFD /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				4F3150892BD2D9650040EEFD /* Fonts */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		4F3150892BD2D9650040EEFD /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				4F3151272BD2E1EA0040EEFD /* otf */,
-				4F3151092BD2DFB20040EEFD /* otf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
-		4F3150C92BD2DB820040EEFD /* App */ = {
-			isa = PBXGroup;
-			children = (
-				4F3150752BD2BD150040EEFD /* Resources */,
-				4F3150762BD2BD310040EEFD /* Sources */,
-				4F3150772BD2BE0F0040EEFD /* Support */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
-		4F3151092BD2DFB20040EEFD /* otf */ = {
-			isa = PBXGroup;
-			children = (
-				4F31510A2BD2DFB20040EEFD /* WantedSans-Bold.otf */,
-				4F31510B2BD2DFB20040EEFD /* WantedSans-Medium.otf */,
-				4F31510C2BD2DFB20040EEFD /* WantedSans-Black.otf */,
-				4F31510D2BD2DFB20040EEFD /* WantedSans-SemiBold.otf */,
-				4F31510E2BD2DFB20040EEFD /* WantedSans-ExtraBold.otf */,
-				4F31510F2BD2DFB20040EEFD /* WantedSans-Regular.otf */,
-				4F3151102BD2DFB20040EEFD /* WantedSans-ExtraBlack.otf */,
-			);
-			path = otf;
-			sourceTree = "<group>";
-		};
-		4F3151272BD2E1EA0040EEFD /* otf */ = {
-			isa = PBXGroup;
-			children = (
-				4F3151282BD2E1EA0040EEFD /* WantedSansStd-Medium.otf */,
-				4F3151292BD2E1EA0040EEFD /* WantedSansStd-ExtraBold.otf */,
-				4F31512A2BD2E1EA0040EEFD /* WantedSansStd-ExtraBlack.otf */,
-				4F31512B2BD2E1EA0040EEFD /* WantedSansStd-Black.otf */,
-				4F31512C2BD2E1EA0040EEFD /* WantedSansStd-Regular.otf */,
-				4F31512D2BD2E1EA0040EEFD /* WantedSansStd-Bold.otf */,
-				4F31512E2BD2E1EA0040EEFD /* WantedSansStd-SemiBold.otf */,
-			);
-			name = otf;
-			path = "../../../../../../../../../../../../Downloads/WantedSansStd-1.0.3 2/otf";
 			sourceTree = "<group>";
 		};
 		8F2D5447901A5AA2E1E455C8 /* Frameworks */ = {
@@ -312,21 +213,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F3151352BD2E1EB0040EEFD /* WantedSansStd-SemiBold.otf in Resources */,
-				4F3151142BD2DFB20040EEFD /* WantedSans-SemiBold.otf in Resources */,
-				4F3151132BD2DFB20040EEFD /* WantedSans-Black.otf in Resources */,
-				4F3151332BD2E1EB0040EEFD /* WantedSansStd-Regular.otf in Resources */,
-				4F31512F2BD2E1EB0040EEFD /* WantedSansStd-Medium.otf in Resources */,
-				4F3151322BD2E1EB0040EEFD /* WantedSansStd-Black.otf in Resources */,
-				4F3151152BD2DFB20040EEFD /* WantedSans-ExtraBold.otf in Resources */,
 				4F3150352BCADEB60040EEFD /* LaunchScreen.storyboard in Resources */,
-				4F3151302BD2E1EB0040EEFD /* WantedSansStd-ExtraBold.otf in Resources */,
-				4F3151162BD2DFB20040EEFD /* WantedSans-Regular.otf in Resources */,
-				4F3151172BD2DFB20040EEFD /* WantedSans-ExtraBlack.otf in Resources */,
-				4F3151342BD2E1EB0040EEFD /* WantedSansStd-Bold.otf in Resources */,
-				4F3151312BD2E1EB0040EEFD /* WantedSansStd-ExtraBlack.otf in Resources */,
-				4F3151112BD2DFB20040EEFD /* WantedSans-Bold.otf in Resources */,
-				4F3151122BD2DFB20040EEFD /* WantedSans-Medium.otf in Resources */,
 				4F3150322BCADEB60040EEFD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -531,7 +418,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "SCUL-iOS/Project/App/Support/Info.plist";
+				INFOPLIST_FILE = "SCUL-iOS/Project/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -558,7 +445,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "SCUL-iOS/Project/App/Support/Info.plist";
+				INFOPLIST_FILE = "SCUL-iOS/Project/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
