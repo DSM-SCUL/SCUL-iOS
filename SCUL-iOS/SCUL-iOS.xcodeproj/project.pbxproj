@@ -49,6 +49,14 @@
 		4F3838F52BD88EC6004C3615 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3838F42BD88EC6004C3615 /* BaseViewController.swift */; };
 		4F3838F72BD88ECD004C3615 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3838F62BD88ECD004C3615 /* BaseViewModel.swift */; };
 		4F3838F92BD892DD004C3615 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3838F82BD892DD004C3615 /* ReviewViewController.swift */; };
+		4F38390D2BD89D1B004C3615 /* SculAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38390C2BD89D1B004C3615 /* SculAPI.swift */; };
+		4F3839112BDA19E4004C3615 /* JwtAuthorizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3839102BDA19E4004C3615 /* JwtAuthorizable.swift */; };
+		4F3839132BDA19F8004C3615 /* JwtPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3839122BDA19F8004C3615 /* JwtPlugin.swift */; };
+		4F3839152BDA1A08004C3615 /* TokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3839142BDA1A08004C3615 /* TokenDTO.swift */; };
+		4F3839172BDA1A1D004C3615 /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3839162BDA1A1D004C3615 /* MoyaLoggingPlugin.swift */; };
+		4F38391A2BDA31D4004C3615 /* JwtImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3839192BDA31D4004C3615 /* JwtImpl.swift */; };
+		4F38391C2BDA31F3004C3615 /* JwtStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38391B2BDA31F3004C3615 /* JwtStore.swift */; };
+		4F38391E2BDA3207004C3615 /* KeychainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38391D2BDA3207004C3615 /* KeychainAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +104,14 @@
 		4F3838F42BD88EC6004C3615 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		4F3838F62BD88ECD004C3615 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		4F3838F82BD892DD004C3615 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		4F38390C2BD89D1B004C3615 /* SculAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SculAPI.swift; sourceTree = "<group>"; };
+		4F3839102BDA19E4004C3615 /* JwtAuthorizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JwtAuthorizable.swift; sourceTree = "<group>"; };
+		4F3839122BDA19F8004C3615 /* JwtPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JwtPlugin.swift; sourceTree = "<group>"; };
+		4F3839142BDA1A08004C3615 /* TokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDTO.swift; sourceTree = "<group>"; };
+		4F3839162BDA1A1D004C3615 /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
+		4F3839192BDA31D4004C3615 /* JwtImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JwtImpl.swift; sourceTree = "<group>"; };
+		4F38391B2BDA31F3004C3615 /* JwtStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JwtStore.swift; sourceTree = "<group>"; };
+		4F38391D2BDA3207004C3615 /* KeychainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAssembly.swift; sourceTree = "<group>"; };
 		65C91DB2221BD0CC812E0F94 /* Pods-SCUL-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCUL-iOS.debug.xcconfig"; path = "Target Support Files/Pods-SCUL-iOS/Pods-SCUL-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6A48DE9F69E6CD0DD3506B3F /* Pods-SCUL-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCUL-iOS.release.xcconfig"; path = "Target Support Files/Pods-SCUL-iOS/Pods-SCUL-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,6 +199,7 @@
 		4F31507D2BD2BF6F0040EEFD /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4F3839062BD89C9F004C3615 /* AppNetwork */,
 				4F3150862BD2D9050040EEFD /* DesignSystem */,
 			);
 			path = Modules;
@@ -192,6 +209,9 @@
 			isa = PBXGroup;
 			children = (
 				4F3150C92BD2DB820040EEFD /* App */,
+				4F3839182BDA31C7004C3615 /* Core */,
+				4F3838FB2BD897D4004C3615 /* Data */,
+				4F3838FA2BD897CE004C3615 /* Domain */,
 				4F31507C2BD2BF630040EEFD /* Presentation */,
 				4F31507D2BD2BF6F0040EEFD /* Modules */,
 			);
@@ -403,6 +423,154 @@
 			path = Review;
 			sourceTree = "<group>";
 		};
+		4F3838FA2BD897CE004C3615 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				4F3838FC2BD89B19004C3615 /* Sources */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		4F3838FB2BD897D4004C3615 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4F3839002BD89C4A004C3615 /* Sources */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		4F3838FC2BD89B19004C3615 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4F3838FF2BD89C3E004C3615 /* UseCases */,
+				4F3838FE2BD89BC8004C3615 /* Repositories */,
+				4F3838FD2BD89BAA004C3615 /* Entities */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		4F3838FD2BD89BAA004C3615 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		4F3838FE2BD89BC8004C3615 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		4F3838FF2BD89C3E004C3615 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		4F3839002BD89C4A004C3615 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4F3839052BD89C71004C3615 /* Repositories */,
+				4F3839032BD89C60004C3615 /* DTO */,
+				4F3839022BD89C5C004C3615 /* DI */,
+				4F3839012BD89C4F004C3615 /* DataSource */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		4F3839012BD89C4F004C3615 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		4F3839022BD89C5C004C3615 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		4F3839032BD89C60004C3615 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		4F3839052BD89C71004C3615 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		4F3839062BD89C9F004C3615 /* AppNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				4F3839072BD89CAF004C3615 /* Project */,
+			);
+			path = AppNetwork;
+			sourceTree = "<group>";
+		};
+		4F3839072BD89CAF004C3615 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				4F3839082BD89CC0004C3615 /* Sources */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		4F3839082BD89CC0004C3615 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4F3839092BD89CE7004C3615 /* Plugins */,
+				4F38390C2BD89D1B004C3615 /* SculAPI.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		4F3839092BD89CE7004C3615 /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				4F38390A2BD89CEC004C3615 /* Jwt */,
+				4F38390B2BD89D00004C3615 /* Logging */,
+			);
+			path = Plugins;
+			sourceTree = "<group>";
+		};
+		4F38390A2BD89CEC004C3615 /* Jwt */ = {
+			isa = PBXGroup;
+			children = (
+				4F3839102BDA19E4004C3615 /* JwtAuthorizable.swift */,
+				4F3839122BDA19F8004C3615 /* JwtPlugin.swift */,
+				4F3839142BDA1A08004C3615 /* TokenDTO.swift */,
+			);
+			path = Jwt;
+			sourceTree = "<group>";
+		};
+		4F38390B2BD89D00004C3615 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				4F3839162BDA1A1D004C3615 /* MoyaLoggingPlugin.swift */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
+		4F3839182BDA31C7004C3615 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4F3839192BDA31D4004C3615 /* JwtImpl.swift */,
+				4F38391B2BDA31F3004C3615 /* JwtStore.swift */,
+				4F38391D2BDA3207004C3615 /* KeychainAssembly.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		8F2D5447901A5AA2E1E455C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,7 +715,9 @@
 				4F3838E72BD8880D004C3615 /* MyPageViewController.swift in Sources */,
 				4F3838DD2BD88713004C3615 /* MainViewController.swift in Sources */,
 				4F31516B2BD44D880040EEFD /* UIFont+Label.swift in Sources */,
+				4F38391C2BDA31F3004C3615 /* JwtStore.swift in Sources */,
 				4F3151672BD44CBA0040EEFD /* UIFont+Body.swift in Sources */,
+				4F38391E2BDA3207004C3615 /* KeychainAssembly.swift in Sources */,
 				4F3838F52BD88EC6004C3615 /* BaseViewController.swift in Sources */,
 				4F3151652BD44B6D0040EEFD /* UIFont+SB.swift in Sources */,
 				4F31516D2BD44DBD0040EEFD /* UIFont+Button.swift in Sources */,
@@ -558,20 +728,26 @@
 				4F3838D52BD88686004C3615 /* LoginViewModel.swift in Sources */,
 				4F3838E92BD88814004C3615 /* MyPageViewModel.swift in Sources */,
 				4F3838CB2BD882D4004C3615 /* UIColor + Main.swift in Sources */,
+				4F3839132BDA19F8004C3615 /* JwtPlugin.swift in Sources */,
+				4F38391A2BDA31D4004C3615 /* JwtImpl.swift in Sources */,
 				4F3838E22BD887DA004C3615 /* SearchViewController.swift in Sources */,
 				4F3150292BCADEB50040EEFD /* AppDelegate.swift in Sources */,
 				4F3838EE2BD88854004C3615 /* MainDetailViewModel.swift in Sources */,
 				4F3838D02BD885CE004C3615 /* SplashViewModel.swift in Sources */,
 				4F3151632BD4426C0040EEFD /* UIFont+Heading.swift in Sources */,
+				4F3839172BDA1A1D004C3615 /* MoyaLoggingPlugin.swift in Sources */,
 				4F3838E42BD887E1004C3615 /* SearchViewModel.swift in Sources */,
 				4F3838D32BD88671004C3615 /* LoginViewController.swift in Sources */,
+				4F38390D2BD89D1B004C3615 /* SculAPI.swift in Sources */,
 				4F3838C62BD881E3004C3615 /* UIImage.swift in Sources */,
 				4F3838F72BD88ECD004C3615 /* BaseViewModel.swift in Sources */,
+				4F3839112BDA19E4004C3615 /* JwtAuthorizable.swift in Sources */,
 				4F3838F32BD8888D004C3615 /* ReviewViewModel.swift in Sources */,
 				4F3838EC2BD8884B004C3615 /* MainDetailViewController.swift in Sources */,
 				4F31502B2BCADEB50040EEFD /* SceneDelegate.swift in Sources */,
 				4F3838CE2BD884DB004C3615 /* SplashViewController.swift in Sources */,
 				4F3838DF2BD8871A004C3615 /* MainViewModel.swift in Sources */,
+				4F3839152BDA1A08004C3615 /* TokenDTO.swift in Sources */,
 				4F3838F92BD892DD004C3615 /* ReviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
