@@ -1,11 +1,6 @@
-//
-//  AppDelegate.swift
-//  SCUL-iOS
-//
-//  Created by 이태규 on 4/14/24.
-//
-
 import UIKit
+import Swinject
+import Then
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
