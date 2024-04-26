@@ -2,13 +2,7 @@ import UIKit
 import SnapKit
 import Then
 
-class SplashViewController: BaseViewController<SplashViewModel> {
-    private let logoImageView = UIImageView().then {
-        $0.image = UIImage.SculLogo
-    }
-    private let navigateToLoginButton = UIButton().then {
-        $0.setTitle("로그인 후 SCUL 사용하기", for: .normal)
-    }
+class MyReviewViewController: BaseViewController<MyReviewViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         addView()

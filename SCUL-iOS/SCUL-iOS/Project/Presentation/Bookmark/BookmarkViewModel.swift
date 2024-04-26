@@ -3,7 +3,7 @@ import RxSwift
 import RxCocoa
 import RxFlow
 
-public final class SplashViewModel: BaseViewModel, Stepper {
+public final class BookmarkViewModel: BaseViewModel, Stepper {
     public let steps = PublishRelay<Step>()
     private let disposeBag = DisposeBag()
 
