@@ -90,6 +90,10 @@
 		4F38396E2BDB3696004C3615 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38396D2BDB3696004C3615 /* BookmarkViewController.swift */; };
 		4F3839702BDB36A2004C3615 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38396F2BDB36A2004C3615 /* BookmarkViewModel.swift */; };
 		4F3839732BDB3897004C3615 /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3839722BDB3897004C3615 /* AppStepper.swift */; };
+		4F3839752BDB3FA7004C3615 /* DataSourceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3839742BDB3FA7004C3615 /* DataSourceAssembly.swift */; };
+		4F3839772BDB3FC4004C3615 /* RepositoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3839762BDB3FC4004C3615 /* RepositoryAssembly.swift */; };
+		4F3839792BDB3FF1004C3615 /* UseCaseAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3839782BDB3FF1004C3615 /* UseCaseAssembly.swift */; };
+		4F38397C2BDB406D004C3615 /* PresentationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38397B2BDB406D004C3615 /* PresentationAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -178,6 +182,10 @@
 		4F38396D2BDB3696004C3615 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		4F38396F2BDB36A2004C3615 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		4F3839722BDB3897004C3615 /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
+		4F3839742BDB3FA7004C3615 /* DataSourceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceAssembly.swift; sourceTree = "<group>"; };
+		4F3839762BDB3FC4004C3615 /* RepositoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryAssembly.swift; sourceTree = "<group>"; };
+		4F3839782BDB3FF1004C3615 /* UseCaseAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseAssembly.swift; sourceTree = "<group>"; };
+		4F38397B2BDB406D004C3615 /* PresentationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationAssembly.swift; sourceTree = "<group>"; };
 		65C91DB2221BD0CC812E0F94 /* Pods-SCUL-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCUL-iOS.debug.xcconfig"; path = "Target Support Files/Pods-SCUL-iOS/Pods-SCUL-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6A48DE9F69E6CD0DD3506B3F /* Pods-SCUL-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCUL-iOS.release.xcconfig"; path = "Target Support Files/Pods-SCUL-iOS/Pods-SCUL-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -249,6 +257,7 @@
 		4F31507C2BD2BF630040EEFD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				4F38397A2BDB4065004C3615 /* DI */,
 				4F31507F2BD2C0E50040EEFD /* Base */,
 				4F3838CC2BD884C5004C3615 /* Onboarding */,
 				4F3838D12BD88660004C3615 /* Login */,
@@ -563,6 +572,9 @@
 		4F3839022BD89C5C004C3615 /* DI */ = {
 			isa = PBXGroup;
 			children = (
+				4F3839742BDB3FA7004C3615 /* DataSourceAssembly.swift */,
+				4F3839762BDB3FC4004C3615 /* RepositoryAssembly.swift */,
+				4F3839782BDB3FF1004C3615 /* UseCaseAssembly.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -742,6 +754,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		4F38397A2BDB4065004C3615 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				4F38397B2BDB406D004C3615 /* PresentationAssembly.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 		8F2D5447901A5AA2E1E455C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -899,8 +919,10 @@
 				4F3151652BD44B6D0040EEFD /* UIFont+SB.swift in Sources */,
 				4F38395E2BDB33B4004C3615 /* ReviewFlow.swift in Sources */,
 				4F3839342BDA753E004C3615 /* LoginStep.swift in Sources */,
+				4F3839752BDB3FA7004C3615 /* DataSourceAssembly.swift in Sources */,
 				4F31516D2BD44DBD0040EEFD /* UIFont+Button.swift in Sources */,
 				4F3151692BD44CF20040EEFD /* UIFont+Caption.swift in Sources */,
+				4F3839772BDB3FC4004C3615 /* RepositoryAssembly.swift in Sources */,
 				4F3838DA2BD886B9004C3615 /* SignupViewModel.swift in Sources */,
 				4F38394B2BDB2598004C3615 /* MyPageStep.swift in Sources */,
 				4F3839402BDB23B0004C3615 /* BaseTabBarController.swift in Sources */,
@@ -920,6 +942,7 @@
 				4F38396B2BDB3657004C3615 /* BookmarkFlow.swift in Sources */,
 				4F3838EE2BD88854004C3615 /* PlaceGuideDetailViewModel.swift in Sources */,
 				4F3839702BDB36A2004C3615 /* BookmarkViewModel.swift in Sources */,
+				4F38397C2BDB406D004C3615 /* PresentationAssembly.swift in Sources */,
 				4F3838D02BD885CE004C3615 /* OnboardingViewModel.swift in Sources */,
 				4F3151632BD4426C0040EEFD /* UIFont+Heading.swift in Sources */,
 				4F3839362BDA755A004C3615 /* LoginFlow.swift in Sources */,
@@ -947,6 +970,7 @@
 				4F3838DF2BD8871A004C3615 /* MainViewModel.swift in Sources */,
 				4F3839542BDB2837004C3615 /* SearchFlow.swift in Sources */,
 				4F3839492BDB2587004C3615 /* SearchStep.swift in Sources */,
+				4F3839792BDB3FF1004C3615 /* UseCaseAssembly.swift in Sources */,
 				4F3839152BDA1A08004C3615 /* TokenDTO.swift in Sources */,
 				4F3839382BDA91F6004C3615 /* SignupStep.swift in Sources */,
 				4F3839522BDB282F004C3615 /* MainFlow.swift in Sources */,

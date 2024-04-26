@@ -7,20 +7,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var coordinator = FlowCoordinator()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: windowScene)
+        guard let windowScence = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScence)
+        window?.windowScene = windowScence
+        window?.backgroundColor = .white
 
-        let viewController = SplashViewController(SplashViewModel())
-        window?.rootViewController = viewController
+        let appFlow = AppFlow(window: window!, container: AppDelegate.container)
+        self.coordinator.coordinate(flow: appFlow, with: AppStepper())
         window?.makeKeyAndVisible()
-//        guard let windowScence = (scene as? UIWindowScene) else { return }
-//        window = UIWindow(windowScene: windowScence)
-//        window?.windowScene = windowScence
-//        window?.backgroundColor = .white
-//
-//        let appFlow = AppFlow(window: window!, container: AppDelegate.container)
-//        self.coordinator.coordinate(flow: appFlow, with: AppStepper())
-//        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) { }
