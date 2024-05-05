@@ -8,6 +8,15 @@ class SearchTableViewCell: BaseTableViewCell<SearchViewModel> {
     static let identifier = "SearchTableViewCell"
     private var disposeBag = DisposeBag()
 
+    private var isActivateBookmark = false {
+        didSet {
+            var bookmarkImage: UIImage {
+                isActivateBookmark ? .BookmarkOn!: .BookmarkOff!
+            }
+            bookmarkButton.setImage(bookmarkImage, for: .normal)
+        }
+    }
+
     var placeImageView = UIImageView().then {
         $0.backgroundColor = .Gray100
         $0.layer.cornerRadius = 4
@@ -69,5 +78,11 @@ class SearchTableViewCell: BaseTableViewCell<SearchViewModel> {
         }
     }
 
-    override func configureView() {}
+    override func configureView() {
+        bookmarkButton.rx.tap
+            .subscribe(onNext: {
+                self.isActivateBookmark.toggle()
+            })
+            .disposed(by: disposeBag)
+    }
 }
