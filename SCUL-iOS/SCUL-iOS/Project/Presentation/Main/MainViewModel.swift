@@ -8,12 +8,21 @@ public final class MainViewModel: BaseViewModel, Stepper {
     private let disposeBag = DisposeBag()
 
 //    init( ) { }
-
-    public struct Input { }
+//    collectionViewCellDidTap
+    public struct Input {
+        let collectionViewCellDidTap: PublishRelay<Void>
+    }
 
     public struct Output { }
 
     public func transform(_ input: Input) -> Output {
+        input.collectionViewCellDidTap.asObservable()
+            .map {
+                print("여기는 들어오나~")
+                return MainStep.placeGuideDetailIsRequired
+            }
+            .bind(to: steps)
+            .disposed(by: disposeBag)
         return Output( )
     }
 }
