@@ -11,4 +11,11 @@ public extension UIImage {
     //MARK: Bookmark
     static let BookmarkOff = UIImage(named: "BookmarkOff")
     static let BookmarkOn = UIImage(named: "BookmarkOn")
+
+    //MARK: SearchEmpty
+    static let SearchEmpty = UIImage(named: "SearchEmpty")
+
+    //MARK: Eyes
+    static let EyesOff = UIImage(named: "EyesOff")
+    static let EyesOn = UIImage(named: "EyesOn")
 }
