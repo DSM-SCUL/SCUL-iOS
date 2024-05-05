@@ -4,13 +4,14 @@ import RxFlow
 
 public final class MyReviewFlow: Flow {
     public let container: Container
-    private let rootViewController = BaseNavigationController()
+    private let rootViewController: MyReviewViewController
     public var root: Presentable {
         return rootViewController
     }
 
     public init(container: Container) {
         self.container = container
+        self.rootViewController = container.resolve(MyReviewViewController.self)!
     }
 
     public func navigate(to step: Step) -> FlowContributors {
@@ -25,16 +26,9 @@ public final class MyReviewFlow: Flow {
 
 private extension MyReviewFlow {
     func navigateToMyReview()-> FlowContributors {
-        let myReviewViewController = container.resolve(MyReviewViewController.self)!
-
-        self.rootViewController.navigationController?.setViewControllers(
-            [myReviewViewController],
-            animated: true
-        )
-
         return .one(flowContributor: .contribute(
-            withNextPresentable: myReviewViewController,
-            withNextStepper: myReviewViewController.viewModel
+            withNextPresentable: rootViewController,
+            withNextStepper: rootViewController.viewModel
         ))
     }
 }
