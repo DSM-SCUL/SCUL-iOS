@@ -5,7 +5,7 @@ import SnapKit
 import Then
 
 class LoginViewController: BaseViewController<LoginViewModel> {
-    private let navigateToMainButtonDidTap = PublishRelay<Void>()
+    private let loginButtonDidTap = PublishRelay<(String, String)>()
     private let navigateToSignupButtonDidTap = PublishRelay<Void>()
     private var isActivateEye = false {
         didSet {
@@ -136,11 +136,14 @@ class LoginViewController: BaseViewController<LoginViewModel> {
 
     public override func bind() {
         let input = LoginViewModel.Input(
-            navigateToMainButtonDidTap: navigateToMainButtonDidTap,
-            navigateToSignupButtonDidTap: navigateToSignupButtonDidTap
+            loginButtonDidTap: loginButtonDidTap,
+            navigateToSignupButtonDidTap: navigateToSignupButtonDidTap,
+            idText: loginTextField.rx.text.orEmpty.asObservable(),
+            passwordText: passwordTextField.rx.text.orEmpty.asObservable(),
+            loginButtonSignal: loginButton.rx.tap.asObservable()
         )
 
-        let _ = viewModel.transform(input)
+        let output = viewModel.transform(input)
     }
 
     public override func configureViewController() {
@@ -148,7 +151,12 @@ class LoginViewController: BaseViewController<LoginViewModel> {
         passwordTextField.delegate = self
         loginButton.rx.tap
             .subscribe(onNext: { _ in
-                self.navigateToMainButtonDidTap.accept(())
+                if let loginText = self.loginTextField.text,
+                   let passwordText = self.passwordTextField.text {
+                    self.loginButtonDidTap.accept((loginText, passwordText))
+                } else {
+                    print("Error: Missing login or password")
+                }
             })
             .disposed(by: disposeBag)
 
