@@ -7,9 +7,9 @@ public enum TokenType {
     var tokenKey: String {
         switch self {
         case .accessToken:
-            return "access_token"
+            return "accessToken"
         case .refreshToken:
-            return "refresh_token"
+            return "refreshToken"
         default:
             return ""
         }
