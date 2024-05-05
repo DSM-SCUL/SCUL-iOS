@@ -9,11 +9,21 @@ public final class MyPageViewModel: BaseViewModel, Stepper {
 
 //    init( ) { }
 
-    public struct Input { }
+    public struct Input {
+        let myReviewButtonDidTap: PublishRelay<Void>
+    }
 
     public struct Output { }
 
     public func transform(_ input: Input) -> Output {
+        input.myReviewButtonDidTap.asObservable()
+            .map {
+                print("여기는 들어오나~")
+                return MyPageStep.myReviewIsRequired
+            }
+            .bind(to: steps)
+            .disposed(by: disposeBag)
+
         return Output( )
     }
 }

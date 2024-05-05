@@ -1,8 +1,12 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
+import RxCocoa
 
 class MyPageViewController: BaseViewController<MyPageViewModel> {
+    private let myReviewButtonDidTap = PublishRelay<Void>()
+
     private let explainLabel = UILabel().then {
         $0.labelSetting(text: "즐거운 여가시간을 보내는", font: .caption1)
         $0.textColor = .Gray800
@@ -99,11 +103,23 @@ class MyPageViewController: BaseViewController<MyPageViewModel> {
         }
     }
 
-    public override func bind() {}
+    public override func bind() {
+        let input = MyPageViewModel.Input(
+            myReviewButtonDidTap: myReviewButtonDidTap
+        )
+
+        let _ = viewModel.transform(input)
+    }
 
     public override func configureViewController() {
         self.navigationItem.title = "MY"
         self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+
+        myReviewButton.rx.tap
+            .subscribe(onNext: {
+                self.myReviewButtonDidTap.accept(())
+            })
+            .disposed(by: disposeBag)
     }
 
     public override func configureNavigation() {}
