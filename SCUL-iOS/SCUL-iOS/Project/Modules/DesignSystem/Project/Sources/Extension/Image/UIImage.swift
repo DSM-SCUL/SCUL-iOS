@@ -18,4 +18,10 @@ public extension UIImage {
     //MARK: Eyes
     static let EyesOff = UIImage(named: "EyesOff")
     static let EyesOn = UIImage(named: "EyesOn")
+
+    //MARK: MyReview
+    static let MyReview = UIImage(named: "MyReview")
+
+    //MARK: Logout
+    static let Logout = UIImage(named: "Logout")
 }
