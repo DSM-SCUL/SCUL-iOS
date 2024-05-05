@@ -291,10 +291,6 @@ extension PlaceGuideDetailViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ReviewTableViewCell.identifier, for: indexPath) as! ReviewTableViewCell
 
-//        cell.nameLabel.text = "강*민"
-//        cell.dateLabel.text = "2024.05.01"
-//        cell.contentLabel.text = "ㅁ누어ㅠ노뮤럼유퓸너ㅏ춘ㅇㅊㄴ마ㅓㅇ ㅍㅇ러ㅗ퓨ㅜㄴ어ㅏㅁ ㄴㅇ"
-
         return cell
     }
     
