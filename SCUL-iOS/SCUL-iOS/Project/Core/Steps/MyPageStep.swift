@@ -4,5 +4,5 @@ public enum MyPageStep: Step {
     case myPageIsRequired
     case myReviewIsRequired
     case bookmarkIsRequired
-    case logoutIsRequired
+    case tabsIsRequired
 }
