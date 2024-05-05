@@ -2,10 +2,11 @@ PODS:
   - Alamofire (5.7.1)
   - KeychainSwift (22.0.0)
   - Kingfisher (7.10.0)
-  - Moya (15.0.0):
-    - Moya/Core (= 15.0.0)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
+  - Moya/RxSwift (15.0.0):
+    - Moya/Core
+    - RxSwift (~> 6.0)
   - RxCocoa (6.6.0):
     - RxRelay (= 6.6.0)
     - RxSwift (= 6.6.0)
@@ -23,7 +24,7 @@ DEPENDENCIES:
   - Alamofire
   - KeychainSwift
   - Kingfisher
-  - Moya
+  - Moya/RxSwift
   - RxFlow
   - RxSwift
   - SnapKit
@@ -57,6 +58,6 @@ SPEC CHECKSUMS:
   Swinject: fe8cbab252e12690484090d9cffa017485e268ce
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: f83cceb1a4d4e5b978b7c4de1c3a7ef7e2d2976a
+PODFILE CHECKSUM: b1c670c2abd7966de082a0a12c37157eda4550a2
 
 COCOAPODS: 1.12.1
