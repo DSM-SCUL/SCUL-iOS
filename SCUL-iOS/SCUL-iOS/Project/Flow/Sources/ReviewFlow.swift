@@ -16,7 +16,7 @@ public final class ReviewFlow: Flow {
     public func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? ReviewStep else { return .none }
         
-        switch step {
+        switch step { // pop할 때 detail 뷰 써야하는데 이것도 포함 시켜야하나?
         case .reviewIsRequired:
             return navigateToReview()
         }

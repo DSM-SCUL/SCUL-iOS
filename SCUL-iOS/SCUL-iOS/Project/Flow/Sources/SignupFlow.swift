@@ -11,8 +11,7 @@ public final class SignupFlow: Flow {
 
     public init(container: Container) {
         self.container = container
-        self.rootViewController = SignupViewController(container.resolve(SignupViewModel.self)!) //
-//        self.rootViewController = LoginViewController(container.resolve(LoginReactor.self)!)
+        self.rootViewController = SignupViewController(container.resolve(SignupViewModel.self)!)
     }
 
     public func navigate(to step: Step) -> FlowContributors {
@@ -50,16 +49,5 @@ private extension SignupFlow {
             withNextPresentable: rootViewController,
             withNextStepper: rootViewController.viewModel
         ))
-//        let signupViewController = container.resolve(SignupViewController.self)!
-//
-//        self.rootViewController.setViewControllers(
-//            [signupViewController],
-//            animated: true
-//        )
-//
-//        return .one(flowContributor: .contribute(
-//            withNextPresentable: signupViewController,
-//            withNextStepper: signupViewController.viewModel
-//        ))
     }
 }

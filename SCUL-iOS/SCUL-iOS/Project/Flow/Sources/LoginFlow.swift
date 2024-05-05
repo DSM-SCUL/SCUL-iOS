@@ -1,10 +1,9 @@
 import UIKit
 import Swinject
 import RxFlow
-// Flow 전부 LoginFlow 처럼 바꾸어야할듯.
+
 public final class LoginFlow: Flow {
     public let container: Container
-//    private let rootViewController = BaseNavigationController()
     private let rootViewController: LoginViewController
     public var root: Presentable {
         return rootViewController
@@ -33,17 +32,6 @@ public final class LoginFlow: Flow {
 
 private extension LoginFlow {
     func navigateToLogin() -> FlowContributors {
-//        let loginViewController = container.resolve(LoginViewController.self)!
-//
-//        self.rootViewController.navigationController?.setViewControllers(
-//            [loginViewController],
-//            animated: true
-//        )
-//
-//        return .one(flowContributor: .contribute(
-//            withNextPresentable: loginViewController,
-//            withNextStepper: loginViewController.viewModel
-//        ))
         return .one(flowContributor: .contribute(
             withNextPresentable: rootViewController,
             withNextStepper: rootViewController.viewModel
@@ -51,17 +39,6 @@ private extension LoginFlow {
     }
 
     func navigateToSignup() -> FlowContributors {
-//        let signupFlow = SignupFlow(container: container)
-//
-//        Flows.use(signupFlow, when: .created) { root in
-//            self.rootViewController.pushViewController(root, animated: true)
-//        }
-//
-//        return .one(flowContributor: .contribute(
-//            withNextPresentable: signupFlow,
-//            withNextStepper: OneStepper(withSingleStep: SignupStep.signupIsRequired)
-//        ))
-
         let signupFlow = SignupFlow(container: container)
 
         Flows.use(signupFlow, when: .created) { root in
