@@ -4,13 +4,14 @@ import RxFlow
 
 public final class BookmarkFlow: Flow {
     public let container: Container
-    private let rootViewController = BaseNavigationController()
+    private let rootViewController: BookmarkViewController
     public var root: Presentable {
         return rootViewController
     }
 
     public init(container: Container) {
         self.container = container
+        self.rootViewController = container.resolve(BookmarkViewController.self)!
     }
 
     public func navigate(to step: Step) -> FlowContributors {
@@ -28,16 +29,9 @@ public final class BookmarkFlow: Flow {
 
 private extension BookmarkFlow {
     func navigateToBookmark()-> FlowContributors {
-        let bookmarkViewController = container.resolve(BookmarkViewController.self)!
-        
-        self.rootViewController.navigationController?.setViewControllers(
-            [bookmarkViewController],
-            animated: true
-        )
-        
         return .one(flowContributor: .contribute(
-            withNextPresentable: bookmarkViewController,
-            withNextStepper: bookmarkViewController.viewModel
+            withNextPresentable: rootViewController,
+            withNextStepper: rootViewController.viewModel
         ))
     }
     
@@ -45,7 +39,7 @@ private extension BookmarkFlow {
         let placeGuideDetailFlow = PlaceGuideDetailFlow(container: container)
         
         Flows.use(placeGuideDetailFlow, when: .created) { root in
-            self.rootViewController.pushViewController(root, animated: true)
+            self.rootViewController.navigationController?.pushViewController(root, animated: true)
         }
         
         return .one(flowContributor: .contribute(
