@@ -24,12 +24,15 @@ public class AppFlow: Flow {
             return navigateToOnboarding()
 
         case .tabsIsRequired:
-            return .end(forwardToParentFlowWithStep: AppStep.tabsIsRequired)
+            return navigationToTabs()
         }
     }
+}
 
-    private func navigateToOnboarding() -> FlowContributors {
+private extension AppFlow {
+    func navigateToOnboarding() -> FlowContributors {
         let onboardingFlow = OnboardingFlow(container: container)
+
         Flows.use(onboardingFlow, when: .created) { [weak self] root in
             self?.window.rootViewController = root
         }
@@ -37,5 +40,26 @@ public class AppFlow: Flow {
             withNextPresentable: onboardingFlow,
             withNextStepper: OneStepper(withSingleStep: OnboardingStep.onboardingIsRequired)
         ))
+    }
+    
+    func navigationToTabs() -> FlowContributors {
+        let tabsFlow = TabsFlow(container: container)
+
+        Flows.use(tabsFlow, when: .created) { (root) in
+            UIView.transition(
+                with: self.window,
+                duration: 0.5,
+                options: .transitionCrossDissolve
+            ) {
+                self.window.rootViewController = root
+            }
+        }
+
+        return .one(
+            flowContributor: .contribute(
+                withNextPresentable: tabsFlow,
+                withNextStepper: OneStepper(withSingleStep: TabsStep.tabsIsRequired)
+            )
+        )
     }
 }
