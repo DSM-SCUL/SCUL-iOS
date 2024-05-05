@@ -7,6 +7,15 @@ import Then
 class LoginViewController: BaseViewController<LoginViewModel> {
     private let navigateToMainButtonDidTap = PublishRelay<Void>()
     private let navigateToSignupButtonDidTap = PublishRelay<Void>()
+    private var isActivateEye = false {
+        didSet {
+            var eyesImage: UIImage {
+                isActivateEye ? .EyesOn!: .EyesOff!
+            }
+            passwordTextField.isSecureTextEntry = !isActivateEye
+            eyesButton.setImage(eyesImage, for: .normal)
+        }
+    }
 
     private let containerView = UIView()
     private let loginGuideLabel = UILabel().then {
@@ -25,6 +34,9 @@ class LoginViewController: BaseViewController<LoginViewModel> {
     private let passwordTextField = UITextField().then {
         $0.textFieldSetting(placeholder: "비밀번호", font: UIFont.caption2, isHide: true)
         $0.addLeftAndRightView()
+    }
+    private let eyesButton = UIButton().then {
+        $0.setImage(.EyesOff, for: .normal)
     }
     private let signupLabel = UILabel().then {
         $0.labelSetting(text: "아직 회원이 아니라면?", font: UIFont.body2)
@@ -61,6 +73,7 @@ class LoginViewController: BaseViewController<LoginViewModel> {
             loginTextField,
             passwordLabel,
             passwordTextField,
+            eyesButton,
             loginButton
         ].forEach { self.view.addSubview($0) }
 
@@ -94,6 +107,11 @@ class LoginViewController: BaseViewController<LoginViewModel> {
             $0.top.equalTo(passwordLabel.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview().inset(25)
             $0.height.equalTo(40)
+        }
+        eyesButton.snp.makeConstraints {
+            $0.height.width.equalTo(20)
+            $0.trailing.equalTo(passwordTextField.snp.trailing).inset(12)
+            $0.centerY.equalTo(passwordTextField)
         }
 
         loginButton.snp.makeConstraints {
@@ -137,6 +155,12 @@ class LoginViewController: BaseViewController<LoginViewModel> {
         navigateToSignupButton.rx.tap
             .subscribe(onNext: { _ in
                 self.navigateToSignupButtonDidTap.accept(())
+            })
+            .disposed(by: disposeBag)
+
+        eyesButton.rx.tap
+            .subscribe(onNext: {
+                self.isActivateEye.toggle()
             })
             .disposed(by: disposeBag)
     }
