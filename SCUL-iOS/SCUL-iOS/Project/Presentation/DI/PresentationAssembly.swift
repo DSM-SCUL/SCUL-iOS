@@ -16,7 +16,7 @@ public final class PresentationAssembly: Assembly {
             LoginViewController(resolver.resolve(LoginViewModel.self)!)
         }
         container.register(LoginViewModel.self) { resolver in
-            LoginViewModel()
+            LoginViewModel(loginUseCase: resolver.resolve(LoginUseCase.self)!)
         }
 
         container.register(SignupViewController.self) { resolver in
