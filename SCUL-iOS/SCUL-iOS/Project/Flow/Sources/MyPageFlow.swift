@@ -26,8 +26,8 @@ public final class MyPageFlow: Flow {
         case .bookmarkIsRequired:
             return navigateToBookmark()
 
-        case .logoutIsRequired:
-            return .end(forwardToParentFlowWithStep: OnboardingStep.onboardingIsRequired)
+        case .tabsIsRequired:
+            return .end(forwardToParentFlowWithStep: TabsStep.appIsRequired)
         }
     }
 }
