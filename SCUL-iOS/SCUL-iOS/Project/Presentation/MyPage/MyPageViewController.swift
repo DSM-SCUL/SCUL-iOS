@@ -6,6 +6,7 @@ import RxCocoa
 
 class MyPageViewController: BaseViewController<MyPageViewModel> {
     private let myReviewButtonDidTap = PublishRelay<Void>()
+    private let bookmarkButtonDidTap = PublishRelay<Void>()
 
     private let explainLabel = UILabel().then {
         $0.labelSetting(text: "즐거운 여가시간을 보내는", font: .caption1)
@@ -105,7 +106,8 @@ class MyPageViewController: BaseViewController<MyPageViewModel> {
 
     public override func bind() {
         let input = MyPageViewModel.Input(
-            myReviewButtonDidTap: myReviewButtonDidTap
+            myReviewButtonDidTap: myReviewButtonDidTap,
+            bookmarkButtonDidTap: bookmarkButtonDidTap
         )
 
         let _ = viewModel.transform(input)
@@ -118,6 +120,12 @@ class MyPageViewController: BaseViewController<MyPageViewModel> {
         myReviewButton.rx.tap
             .subscribe(onNext: {
                 self.myReviewButtonDidTap.accept(())
+            })
+            .disposed(by: disposeBag)
+
+        myBookmarkButton.rx.tap
+            .subscribe(onNext: {
+                self.bookmarkButtonDidTap.accept(())
             })
             .disposed(by: disposeBag)
     }
