@@ -9,11 +9,20 @@ public final class SearchViewModel: BaseViewModel, Stepper {
 
 //    init( ) { }
 
-    public struct Input { }
+    public struct Input {
+        let tableViewCellDidTap: PublishRelay<Void>
+    }
 
     public struct Output { }
 
     public func transform(_ input: Input) -> Output {
+        input.tableViewCellDidTap.asObservable()
+            .map {
+                print("여기는 들어오나~")
+                return SearchStep.placeGuideDetailIsRequired
+            }
+            .bind(to: steps)
+            .disposed(by: disposeBag)
         return Output( )
     }
 }

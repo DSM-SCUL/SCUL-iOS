@@ -5,7 +5,9 @@ import SnapKit
 import Then
 
 class SearchViewController: BaseViewController<SearchViewModel> {
+    private let tableViewCellDidTap = PublishRelay<Void>()
     let list = BehaviorRelay<[String]>(value: ["ㅁㄴㅇㅁㄴㅇ"])
+
     private let searchImageView = UIImageView().then {
         $0.image = UIImage(systemName: "magnifyingglass")
         $0.tintColor = UIColor.Gray400
@@ -89,23 +91,34 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     }
 
     public override func bind() {
-        list.asObservable()
-            .subscribe(onNext: {
-                self.emptySearchView.isHidden = !$0.isEmpty
-            })
-            .disposed(by: disposeBag)
+        let input = SearchViewModel.Input(
+            tableViewCellDidTap: tableViewCellDidTap
+        )
+
+        let _ = viewModel.transform(input)
     }
 
     public override func configureViewController() {
         searchTableView.dataSource = self
         searchTableView.delegate = self
+        searchTableView.allowsSelection = true
         searchTableView.estimatedSectionHeaderHeight = 0
+
+        list.asObservable()
+            .subscribe(onNext: {
+                self.emptySearchView.isHidden = !$0.isEmpty
+            })
+            .disposed(by: disposeBag)
 
         xmarkButton.rx.tap
             .subscribe(onNext: {
                 self.searchTextField.text = ""
             })
             .disposed(by: disposeBag)
+    }
+
+    public override func viewWillAppear(_ animated: Bool) {
+        self.showTabbar()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -127,5 +140,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.placeLocationLabel.text = "서울 뭐시기뭐시기 깽깽꺵"
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 셀을 클릭했을 때 발생하는 이벤트 처리
+        self.hideTabbar()
+        tableViewCellDidTap.accept(())
+        print("Selected cell at index: \(indexPath.item)")
     }
 }
