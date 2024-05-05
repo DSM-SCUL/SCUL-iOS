@@ -7,22 +7,36 @@ public final class LoginViewModel: BaseViewModel, Stepper {
     public let steps = PublishRelay<Step>()
     private let disposeBag = DisposeBag()
 
-//    init( ) { }
-
-    public struct Input {
-        let navigateToMainButtonDidTap: PublishRelay<Void>
-        let navigateToSignupButtonDidTap: PublishRelay<Void>
+    private let loginUseCase: LoginUseCase
+    
+    public init(loginUseCase: LoginUseCase) {
+        self.loginUseCase = loginUseCase
     }
 
-    public struct Output { }
+    public struct Input {
+        let loginButtonDidTap: PublishRelay<(String, String)>
+        let navigateToSignupButtonDidTap: PublishRelay<Void>
+        let idText: Observable<String>
+        let passwordText: Observable<String>
+        let loginButtonSignal: Observable<Void>
+    }
+
+    public struct Output {
+        
+    }
 
     public func transform(_ input: Input) -> Output {
-        input.navigateToMainButtonDidTap.asObservable()
-            .map {
-                print("This is ViewModel2")
-                return LoginStep.tabsIsRequired
+        let usersEntity = PublishRelay<UsersEntity>()
+
+        input.loginButtonDidTap
+            .flatMap { id, pw in
+                self.loginUseCase.execute(req:
+                                            LoginRequest(
+                                                accountId: id,
+                                                password: pw
+                                            ))
             }
-            .bind(to: steps)
+            .bind(to: usersEntity)
             .disposed(by: disposeBag)
 
         input.navigateToSignupButtonDidTap.asObservable()
@@ -32,6 +46,6 @@ public final class LoginViewModel: BaseViewModel, Stepper {
             .bind(to: steps)
             .disposed(by: disposeBag)
 
-        return Output( )
+        return Output()
     }
 }
