@@ -12,6 +12,7 @@ public final class MyPageViewModel: BaseViewModel, Stepper {
     public struct Input {
         let myReviewButtonDidTap: PublishRelay<Void>
         let bookmarkButtonDidTap: PublishRelay<Void>
+        let logoutButtonDidTap: PublishRelay<Void>
     }
 
     public struct Output { }
@@ -29,6 +30,14 @@ public final class MyPageViewModel: BaseViewModel, Stepper {
             .map {
                 print("여기는 들어오나~")
                 return MyPageStep.bookmarkIsRequired
+            }
+            .bind(to: steps)
+            .disposed(by: disposeBag)
+
+        input.logoutButtonDidTap.asObservable()
+            .map {
+                print("여기는 들어오나~")
+                return MyPageStep.tabsIsRequired
             }
             .bind(to: steps)
             .disposed(by: disposeBag)

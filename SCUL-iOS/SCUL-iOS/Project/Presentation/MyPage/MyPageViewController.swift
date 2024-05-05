@@ -7,6 +7,7 @@ import RxCocoa
 class MyPageViewController: BaseViewController<MyPageViewModel> {
     private let myReviewButtonDidTap = PublishRelay<Void>()
     private let bookmarkButtonDidTap = PublishRelay<Void>()
+    private let logoutButtonDidTap = PublishRelay<Void>()
 
     private let explainLabel = UILabel().then {
         $0.labelSetting(text: "즐거운 여가시간을 보내는", font: .caption1)
@@ -107,7 +108,8 @@ class MyPageViewController: BaseViewController<MyPageViewModel> {
     public override func bind() {
         let input = MyPageViewModel.Input(
             myReviewButtonDidTap: myReviewButtonDidTap,
-            bookmarkButtonDidTap: bookmarkButtonDidTap
+            bookmarkButtonDidTap: bookmarkButtonDidTap,
+            logoutButtonDidTap: logoutButtonDidTap
         )
 
         let _ = viewModel.transform(input)
@@ -128,7 +130,29 @@ class MyPageViewController: BaseViewController<MyPageViewModel> {
                 self.bookmarkButtonDidTap.accept(())
             })
             .disposed(by: disposeBag)
+
+        logoutButton.rx.tap
+            .subscribe(onNext: {
+                self.showLogoutAlert()
+            })
+            .disposed(by: disposeBag)
     }
 
     public override func configureNavigation() {}
+
+    func showLogoutAlert() {
+        let alertController = UIAlertController(title: "로그아웃하시겠습니까?", message: nil, preferredStyle: .alert)
+
+        let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
+            // 로그아웃 동작 수행
+            print("로그아웃!")
+            self.logoutButtonDidTap.accept(())
+        }
+        alertController.addAction(confirmAction)
+
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        present(alertController, animated: true, completion: nil)
+    }
 }
