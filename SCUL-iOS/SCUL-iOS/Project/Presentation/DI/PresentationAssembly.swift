@@ -46,5 +46,12 @@ public final class PresentationAssembly: Assembly {
         container.register(MyPageViewModel.self) { resolver in
             MyPageViewModel()
         }
+
+        container.register(PlaceGuideDetailViewController.self) { resolver in
+            PlaceGuideDetailViewController(resolver.resolve(PlaceGuideDetailViewModel.self)!)
+        }
+        container.register(PlaceGuideDetailViewModel.self) { resolver in
+            PlaceGuideDetailViewModel()
+        }
     }
 }
