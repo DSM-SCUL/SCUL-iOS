@@ -23,10 +23,10 @@ public final class OnboardingFlow: Flow {
         case .loginIsRequired:
             return navigateToLogin()
 
-        case .signupIsRequired:
+        case .signupIsRequired: // 이거는 로그인Flow에만 있어도 될것 같은 부분.
             return navigateToSignup()
 
-        case .tabsIsRequired:
+        case .tabsIsRequired: // 이건 자동로그인 때문에 필요.
             return .end(forwardToParentFlowWithStep: AppStep.tabsIsRequired)
         }
     }

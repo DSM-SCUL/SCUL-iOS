@@ -30,7 +30,7 @@ private extension MainFlow {
     func navigateToMain()-> FlowContributors {
         let mainViewController = container.resolve(MainViewController.self)!
 
-        self.rootViewController.navigationController?.setViewControllers(
+        self.rootViewController.setViewControllers(
             [mainViewController],
             animated: true
         )
@@ -43,14 +43,18 @@ private extension MainFlow {
 
     func navigateToPlaceGuideDetail() -> FlowContributors {
         let placeGuideDetailFlow = PlaceGuideDetailFlow(container: container)
-
         Flows.use(placeGuideDetailFlow, when: .created) { root in
-            self.rootViewController.pushViewController(root, animated: true)
+            self.rootViewController.pushViewController(
+                root,
+                animated: true
+            )
         }
 
         return .one(flowContributor: .contribute(
             withNextPresentable: placeGuideDetailFlow,
-            withNextStepper: OneStepper(withSingleStep: PlaceGuideDetailStep.placeGuideDetailIsRequired)
+            withNextStepper: OneStepper(
+                withSingleStep: PlaceGuideDetailStep.placeGuideDetailIsRequired
+            )
         ))
     }
 }

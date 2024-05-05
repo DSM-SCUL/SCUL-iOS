@@ -4,13 +4,14 @@ import RxFlow
 
 public final class PlaceGuideDetailFlow: Flow {
     public let container: Container
-    private let rootViewController = BaseNavigationController()
+    private let rootViewController: PlaceGuideDetailViewController
     public var root: Presentable {
         return rootViewController
     }
 
     public init(container: Container) {
         self.container = container
+        self.rootViewController = container.resolve(PlaceGuideDetailViewController.self)!
     }
 
     public func navigate(to step: Step) -> FlowContributors {
@@ -28,16 +29,9 @@ public final class PlaceGuideDetailFlow: Flow {
 
 private extension PlaceGuideDetailFlow {
     func navigateToPlaceGuideDetail()-> FlowContributors {
-        let placeGuideDetailViewController = container.resolve(PlaceGuideDetailViewController.self)!
-
-        self.rootViewController.navigationController?.setViewControllers(
-            [placeGuideDetailViewController],
-            animated: true
-        )
-
         return .one(flowContributor: .contribute(
-            withNextPresentable: placeGuideDetailViewController,
-            withNextStepper: placeGuideDetailViewController.viewModel
+            withNextPresentable: rootViewController,
+            withNextStepper: rootViewController.viewModel
         ))
     }
 
@@ -45,7 +39,7 @@ private extension PlaceGuideDetailFlow {
         let reviewFlow = ReviewFlow(container: container)
 
         Flows.use(reviewFlow, when: .created) { root in
-            self.rootViewController.pushViewController(root, animated: true)
+            self.rootViewController.navigationController?.pushViewController(root, animated: true)
         }
 
         return .one(flowContributor: .contribute(

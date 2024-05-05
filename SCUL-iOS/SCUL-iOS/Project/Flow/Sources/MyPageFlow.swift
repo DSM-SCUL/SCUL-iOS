@@ -36,7 +36,7 @@ private extension MyPageFlow {
     func navigateToMyPage()-> FlowContributors {
         let myPageViewController = container.resolve(MyPageViewController.self)!
 
-        self.rootViewController.navigationController?.setViewControllers(
+        self.rootViewController.setViewControllers(
             [myPageViewController],
             animated: true
         )

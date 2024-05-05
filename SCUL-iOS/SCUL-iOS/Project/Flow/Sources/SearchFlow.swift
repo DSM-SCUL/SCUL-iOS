@@ -30,7 +30,7 @@ private extension SearchFlow {
     func navigateToSearch()-> FlowContributors {
         let searchViewController = container.resolve(SearchViewController.self)!
 
-        self.rootViewController.navigationController?.setViewControllers(
+        self.rootViewController.setViewControllers(
             [searchViewController],
             animated: true
         )

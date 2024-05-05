@@ -4,13 +4,14 @@ import RxFlow
 
 public final class SignupFlow: Flow {
     public let container: Container
-    private let rootViewController = BaseNavigationController()
+    private let rootViewController: SignupViewController
     public var root: Presentable {
         return rootViewController
     }
 
     public init(container: Container) {
         self.container = container
+        self.rootViewController = SignupViewController(container.resolve(SignupViewModel.self)!) //
 //        self.rootViewController = LoginViewController(container.resolve(LoginReactor.self)!)
     }
 
@@ -35,7 +36,7 @@ private extension SignupFlow {
         let loginFlow = LoginFlow(container: container)
 
         Flows.use(loginFlow, when: .created) { root in
-            self.rootViewController.pushViewController(root, animated: true)
+            self.rootViewController.navigationController?.pushViewController(root, animated: true)
         }
 
         return .one(flowContributor: .contribute(
@@ -45,16 +46,20 @@ private extension SignupFlow {
     }
 
     func navigateToSignup() -> FlowContributors {
-        let signupViewController = container.resolve(SignupViewController.self)!
-
-        self.rootViewController.setViewControllers(
-            [signupViewController],
-            animated: true
-        )
-
         return .one(flowContributor: .contribute(
-            withNextPresentable: signupViewController,
-            withNextStepper: signupViewController.viewModel
+            withNextPresentable: rootViewController,
+            withNextStepper: rootViewController.viewModel
         ))
+//        let signupViewController = container.resolve(SignupViewController.self)!
+//
+//        self.rootViewController.setViewControllers(
+//            [signupViewController],
+//            animated: true
+//        )
+//
+//        return .one(flowContributor: .contribute(
+//            withNextPresentable: signupViewController,
+//            withNextStepper: signupViewController.viewModel
+//        ))
     }
 }
