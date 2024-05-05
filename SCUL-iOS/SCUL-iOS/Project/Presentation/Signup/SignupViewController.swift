@@ -1,8 +1,20 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
+import RxCocoa
 
 class SignupViewController: BaseViewController<SignupViewModel> {
+    private var isActivateEye = false {
+        didSet {
+            var eyesImage: UIImage {
+                isActivateEye ? .EyesOn!: .EyesOff!
+            }
+            passwordTextField.isSecureTextEntry = !isActivateEye
+            eyesButton.setImage(eyesImage, for: .normal)
+        }
+    }
+
     private let containerView = UIView()
     private let signupGuideLabel = UILabel().then {
         $0.labelSetting(text: "회원가입하고\nSCUL을 사용해보세요", font: UIFont.heading3)
@@ -27,6 +39,9 @@ class SignupViewController: BaseViewController<SignupViewModel> {
     private let passwordTextField = UITextField().then {
         $0.textFieldSetting(placeholder: "비밀번호", font: UIFont.caption2, isHide: true)
         $0.addLeftAndRightView()
+    }
+    private let eyesButton = UIButton().then {
+        $0.setImage(.EyesOff, for: .normal)
     }
     private let loginLabel = UILabel().then {
         $0.labelSetting(text: "이미 회원이라면?", font: UIFont.body2)
@@ -65,6 +80,7 @@ class SignupViewController: BaseViewController<SignupViewModel> {
             signupTextField,
             passwordLabel,
             passwordTextField,
+            eyesButton,
             signupButton
         ].forEach { self.view.addSubview($0) }
 
@@ -109,6 +125,11 @@ class SignupViewController: BaseViewController<SignupViewModel> {
             $0.leading.trailing.equalToSuperview().inset(25)
             $0.height.equalTo(40)
         }
+        eyesButton.snp.makeConstraints {
+            $0.height.width.equalTo(20)
+            $0.trailing.equalTo(passwordTextField.snp.trailing).inset(12)
+            $0.centerY.equalTo(passwordTextField)
+        }
 
         signupButton.snp.makeConstraints {
             $0.height.equalTo(48)
@@ -133,11 +154,11 @@ class SignupViewController: BaseViewController<SignupViewModel> {
     public override func bind() {}
 
     public override func configureViewController() {
-//        navigateToLoginButton.rx.tap.asObservable()
-//            .subscribe(onNext: {
-//                
-//            })
-//            .disposed(by: disposeBag)
+        eyesButton.rx.tap
+            .subscribe(onNext: {
+                self.isActivateEye.toggle()
+            })
+            .disposed(by: disposeBag)
     }
 
     public override func configureNavigation() {}
