@@ -4,7 +4,7 @@ import Then
 import RxSwift
 import RxCocoa
 
-class MyReviewTableViewCell: BaseTableViewCell<MyReviewViewModel> {
+class MyReviewTableViewCell: BaseTableViewCell<MyReviewListEntity> {
     static let identifier = "MyReviewTableViewCell"
     private var disposeBag = DisposeBag()
 
@@ -21,7 +21,7 @@ class MyReviewTableViewCell: BaseTableViewCell<MyReviewViewModel> {
         $0.textColor = .Gray700
     }
     private let contentLabel = UILabel().then {
-        $0.labelSetting(text: "sdksmakdfnklsanfklsakldsadmfkldsanjkgnadkfgnlkdasjngbljdsajgkndaskjgnadsjklgnjkadsngkjldsngljkadsnljkfmdsklafmk", font: .body2)
+        $0.labelSetting(text: "..", font: .body2)
         $0.textColor = .black
     }
 
@@ -56,5 +56,15 @@ class MyReviewTableViewCell: BaseTableViewCell<MyReviewViewModel> {
         }
     }
 
-    override func configureView() {}
+    override func configureView() {
+        self.selectionStyle = .none
+    }
+
+    public override func adapt(model: MyReviewListEntity) {
+        self.model = model
+        nameLabel.text = model.writer
+        placeLabel.text = model.placeName
+        dateLabel.text = model.createdAt
+        contentLabel.text = model.content
+    }
 }

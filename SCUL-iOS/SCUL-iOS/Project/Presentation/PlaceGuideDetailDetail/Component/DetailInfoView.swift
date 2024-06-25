@@ -7,9 +7,17 @@ import RxCocoa
 
 public final class DetailInfoView: BaseView {
     private let disposeBag = DisposeBag()
-    private let disabledTagButton = SculTagButton(tagType: 1)
-    private let babyTagButton = SculTagButton(tagType: 2)
-    private let oldTagButton = SculTagButton(tagType: 3)
+//    private let disabledTagButton = SculTagButton(tagType: 1)
+//    private let babyTagButton = SculTagButton(tagType: 2)
+//    private let oldTagButton = SculTagButton(tagType: 3)
+    private let typeTagButton = UIButton().then {
+        $0.buttonSetting(text: ".....", font: .body3, titleColor: .black)
+        $0.backgroundColor = .white
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.Main300.cgColor
+        $0.contentEdgeInsets = UIEdgeInsets(top: 6, left: 10, bottom: 6, right: 10)
+        $0.layer.cornerRadius = 12
+    }
     private let dividerView = UIView().then {
         $0.backgroundColor = .Gray50
     }
@@ -48,7 +56,7 @@ public final class DetailInfoView: BaseView {
         $0.buttonSetting(text: "https://github.com/ray3238", font: .caption2, titleColor: .Main600)
     }
 
-    public override init( ) {
+    public override init() {
         super.init()
     }
 
@@ -58,9 +66,10 @@ public final class DetailInfoView: BaseView {
 
     public override func addView() {
         [
-            disabledTagButton,
-            babyTagButton,
-            oldTagButton,
+//            disabledTagButton,
+//            babyTagButton,
+//            oldTagButton,
+            typeTagButton,
             dividerView,
             amountLabel,
             amountView,
@@ -74,24 +83,30 @@ public final class DetailInfoView: BaseView {
     }
 
     public override func setLayout() {
-        disabledTagButton.snp.makeConstraints {
+//        disabledTagButton.snp.makeConstraints {
+//            $0.top.equalToSuperview().inset(20)
+//            $0.leading.equalToSuperview().inset(20)
+//            $0.width.equalTo(85)
+//        }
+//        babyTagButton.snp.makeConstraints {
+//            $0.top.equalToSuperview().inset(20)
+//            $0.leading.equalTo(disabledTagButton.snp.trailing).offset(12)
+//            $0.width.equalTo(80)
+//        }
+//        oldTagButton.snp.makeConstraints {
+//            $0.top.equalToSuperview().inset(20)
+//            $0.leading.equalTo(babyTagButton.snp.trailing).offset(12)
+//            $0.width.equalTo(85)
+//        }
+        typeTagButton.snp.makeConstraints {
             $0.top.equalToSuperview().inset(20)
             $0.leading.equalToSuperview().inset(20)
-            $0.width.equalTo(85)
-        }
-        babyTagButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(20)
-            $0.leading.equalTo(disabledTagButton.snp.trailing).offset(12)
-            $0.width.equalTo(80)
-        }
-        oldTagButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(20)
-            $0.leading.equalTo(babyTagButton.snp.trailing).offset(12)
-            $0.width.equalTo(85)
+            $0.trailing.lessThanOrEqualToSuperview().inset(20)
+            $0.height.equalTo(34)
         }
         dividerView.snp.makeConstraints {
             $0.height.equalTo(1)
-            $0.top.equalTo(disabledTagButton.snp.bottom).offset(20)
+            $0.top.equalTo(typeTagButton.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview()
         }
 
@@ -140,5 +155,25 @@ public final class DetailInfoView: BaseView {
                 print("placeLinkButtonClicked!")
             })
             .disposed(by: disposeBag)
+    }
+
+    public func setting(
+        isApplicationAble: Bool,
+        location: String,
+        tagType: String,
+//        x: Float,
+//        y: Float,
+        cultureLink: String
+    ) {
+        if isApplicationAble {
+            amountView.setTitle("무료", for: .normal)
+        } else {
+            amountView.setTitle("유료", for: .normal)
+        }
+        locationDetailLabel.text = location
+        typeTagButton.setTitle(tagType, for: .normal)
+//        let desiredCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(x), longitude: CLLocationDegrees(y))
+//        mapView.setCenter(desiredCoordinate, animated: true)
+        placeLinkButton.setTitle(cultureLink, for: .normal)
     }
 }

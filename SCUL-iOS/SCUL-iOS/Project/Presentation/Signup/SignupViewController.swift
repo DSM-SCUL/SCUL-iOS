@@ -5,6 +5,7 @@ import RxSwift
 import RxCocoa
 
 class SignupViewController: BaseViewController<SignupViewModel> {
+    private let signupButtonDidTap = PublishRelay<(String, String, String)>()
     private var isActivateEye = false {
         didSet {
             var eyesImage: UIImage {
@@ -39,6 +40,10 @@ class SignupViewController: BaseViewController<SignupViewModel> {
     private let passwordTextField = UITextField().then {
         $0.textFieldSetting(placeholder: "비밀번호", font: UIFont.caption2, isHide: true)
         $0.addLeftAndRightView()
+    }
+    private let errorLabel = UILabel().then {
+        $0.labelSetting(text: "", font: .body2)
+        $0.textColor = .Main800
     }
     private let eyesButton = UIButton().then {
         $0.setImage(.EyesOff, for: .normal)
@@ -80,6 +85,7 @@ class SignupViewController: BaseViewController<SignupViewModel> {
             signupTextField,
             passwordLabel,
             passwordTextField,
+            errorLabel,
             eyesButton,
             signupButton
         ].forEach { self.view.addSubview($0) }
@@ -125,6 +131,10 @@ class SignupViewController: BaseViewController<SignupViewModel> {
             $0.leading.trailing.equalToSuperview().inset(25)
             $0.height.equalTo(40)
         }
+        errorLabel.snp.makeConstraints {
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(8)
+            $0.trailing.equalToSuperview().inset(25)
+        }
         eyesButton.snp.makeConstraints {
             $0.height.width.equalTo(20)
             $0.trailing.equalTo(passwordTextField.snp.trailing).inset(12)
@@ -151,15 +161,63 @@ class SignupViewController: BaseViewController<SignupViewModel> {
         }
     }
 
-    public override func bind() {}
+    public override func bind() {
+        let input = SignupViewModel.Input(
+            signupButtonDidTap: signupButtonDidTap
+        )
+
+        let output = viewModel.transform(input)
+
+        output.signupSuccess
+            .subscribe(onNext: {
+                self.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
+
+        output.errorDescription.asObservable()
+            .bind(onNext: { error in
+                self.errorLabel.text = error
+            })
+            .disposed(by: disposeBag)
+    }
 
     public override func configureViewController() {
+        signupTextField.delegate = self
+        passwordTextField.delegate = self
+        nameTextField.delegate = self
+
         eyesButton.rx.tap
             .subscribe(onNext: {
                 self.isActivateEye.toggle()
             })
             .disposed(by: disposeBag)
+
+        signupButton.rx.tap
+            .subscribe(onNext: {
+                if let signupText = self.signupTextField.text,
+                   let passwordText = self.passwordTextField.text,
+                   let nameText = self.nameTextField.text {
+                    self.signupButtonDidTap.accept((signupText, passwordText, nameText))
+                    print("signupButton DidTap!")
+                } else {
+                    print("Error: Missing login or password")
+                }
+            })
+            .disposed(by: disposeBag)
     }
 
     public override func configureNavigation() {}
+}
+
+extension SignupViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let loginText = signupTextField.text, let passwordText = passwordTextField.text, let nameText = nameTextField.text,
+           !loginText.isEmpty && !passwordText.isEmpty && !nameText.isEmpty {
+            signupButton.backgroundColor = .Main500
+            signupButton.isEnabled = true
+        } else {
+            signupButton.isEnabled = false
+        }
+        return true
+    }
 }

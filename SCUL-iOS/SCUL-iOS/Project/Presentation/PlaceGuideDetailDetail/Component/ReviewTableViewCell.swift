@@ -4,7 +4,7 @@ import Then
 import RxSwift
 import RxCocoa
 
-final class ReviewTableViewCell: BaseTableViewCell<PlaceGuideDetailViewModel> {
+final class ReviewTableViewCell: BaseTableViewCell<ReviewListEntity> {
     static let identifier = "ReviewTableViewCell"
     private var disposeBag = DisposeBag()
 
@@ -42,10 +42,18 @@ final class ReviewTableViewCell: BaseTableViewCell<PlaceGuideDetailViewModel> {
         contentLabel.snp.makeConstraints {
             $0.top.equalTo(nameLabel.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(20)
         }
     }
 
     override func configureView() {
+        self.selectionStyle = .none
+    }
+
+    public override func adapt(model: ReviewListEntity) {
+        self.model = model
+        nameLabel.text = model.writer
+        dateLabel.text = model.createdAt
+        contentLabel.text = model.content
     }
 }

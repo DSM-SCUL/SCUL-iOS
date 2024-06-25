@@ -6,6 +6,11 @@ import Then
 
 class PlaceGuideDetailViewController: BaseViewController<PlaceGuideDetailViewModel> {
     private var isExistReview = true
+    let isNavigatedSubject = BehaviorSubject<Bool>(value: false)
+    private let bookmarkButtonDidClicked = PublishRelay<String>()
+    private let navigateToReviewButtonDidClicked = PublishRelay<Void>()
+    private var id: String = ""
+
     private var isActivateBookmark = false {
         didSet {
             var bookmarkImage: UIImage {
@@ -80,7 +85,7 @@ class PlaceGuideDetailViewController: BaseViewController<PlaceGuideDetailViewMod
     private let phoneNumberLabel = SculDetailLabel(menuText: "전화번호").then {
         $0.setContentLabel(contentText: "041-1234-5678")
     }
-    private let useTimeLabel = SculDetailLabel(menuText: "주소").then {
+    private let addressLabel = SculDetailLabel(menuText: "주소").then {
         $0.setContentLabel(contentText: "종로구, 서울 시립 미술관")
     }
     private let runingTimeLabel = SculDetailLabel(menuText: "이용시간").then {
@@ -115,10 +120,23 @@ class PlaceGuideDetailViewController: BaseViewController<PlaceGuideDetailViewMod
             ReviewTableViewCell.self,
             forCellReuseIdentifier: ReviewTableViewCell.identifier
         )
-//        $0.separatorStyle = .none
         $0.estimatedRowHeight = 109
         $0.rowHeight = UITableView.automaticDimension
         $0.showsVerticalScrollIndicator = false
+    }
+
+    private let linkButtomDividerView = UIView().then {
+        $0.backgroundColor = UIColor.Gray50
+    }
+
+    private let reviewLabel = UILabel().then {
+        $0.labelSetting(text: "혹시 이 곳을 다녀오셨나요?", font: .caption1)
+        $0.textColor = .black
+    }
+    private let navigateToReviewButton = UIButton().then {
+        $0.buttonSetting(text: "리뷰 작성하기", font: .caption1, titleColor: .white)
+        $0.backgroundColor = .Main300
+        $0.layer.cornerRadius = 8
     }
 
     override func viewDidLoad() {
@@ -136,7 +154,7 @@ class PlaceGuideDetailViewController: BaseViewController<PlaceGuideDetailViewMod
             bookmarkButton,
             dividerView,
             phoneNumberLabel,
-            useTimeLabel,
+            addressLabel,
             runingTimeLabel,
             submitScheduleLabel,
             operationalScheduleLabel,
@@ -147,7 +165,10 @@ class PlaceGuideDetailViewController: BaseViewController<PlaceGuideDetailViewMod
             reviewButtonBottomBorder,
             detailInfoView,
             reviewView,
-            reviewTableView
+            reviewTableView,
+            linkButtomDividerView,
+            reviewLabel,
+            navigateToReviewButton
         ].forEach { self.contentView.addSubview($0) }
     }
 
@@ -160,7 +181,7 @@ class PlaceGuideDetailViewController: BaseViewController<PlaceGuideDetailViewMod
         contentView.snp.makeConstraints {
             $0.edges.equalTo(scrollView.contentLayoutGuide)
             $0.width.equalToSuperview()
-            $0.bottom.equalTo(detailInfoView.snp.bottom).offset(20)
+            $0.bottom.equalTo(navigateToReviewButton.snp.bottom).offset(20)
         }
 
         placeImageView.snp.makeConstraints {
@@ -188,12 +209,12 @@ class PlaceGuideDetailViewController: BaseViewController<PlaceGuideDetailViewMod
             $0.top.equalTo(dividerView.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview()
         }
-        useTimeLabel.snp.makeConstraints {
+        addressLabel.snp.makeConstraints {
             $0.top.equalTo(phoneNumberLabel.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview()
         }
         runingTimeLabel.snp.makeConstraints {
-            $0.top.equalTo(useTimeLabel.snp.bottom).offset(16)
+            $0.top.equalTo(addressLabel.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview()
         }
         submitScheduleLabel.snp.makeConstraints {
@@ -238,13 +259,82 @@ class PlaceGuideDetailViewController: BaseViewController<PlaceGuideDetailViewMod
             $0.top.equalTo(detailInfoButtonBottomBorder.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview()
         }
+        linkButtomDividerView.snp.makeConstraints {
+            $0.height.equalTo(3)
+            $0.top.equalTo(detailInfoView.snp.bottom).offset(16)
+            $0.leading.trailing.equalToSuperview()
+        }
+        reviewLabel.snp.makeConstraints {
+            $0.top.equalTo(linkButtomDividerView.snp.bottom).offset(16)
+            $0.leading.equalToSuperview().inset(20)
+        }
+        navigateToReviewButton.snp.makeConstraints {
+            $0.top.equalTo(linkButtomDividerView.snp.bottom).offset(16)
+            $0.width.equalTo(111)
+            $0.height.equalTo(27)
+            $0.trailing.equalToSuperview().inset(20)
+        }
     }
 
-    public override func bind() {}
+    public override func bind() {
+        let input = PlaceGuideDetailViewModel.Input(
+            viewAppear: self.viewDidLoadPublisher,
+            bookmarkButtonDidTap: bookmarkButtonDidClicked,
+            navigateToReviewButtonDidClicked: navigateToReviewButtonDidClicked
+        )
+
+        let output = viewModel.transform(input)
+
+        output.cultureDetailData.asObservable()
+            .bind { [self] (detailInfo: CultureDetailEntity) in
+                let url = URL(string: detailInfo.imageUrl)!
+                placeImageView.loadImage(from: url)
+                placeNameLabel.text = detailInfo.placeName
+                phoneNumberLabel.setContentLabel(contentText: detailInfo.phoneNumber)
+                addressLabel.setContentLabel(contentText: detailInfo.location)
+                var time: String {
+                    return "\(detailInfo.serviceStartTime)~\(detailInfo.serviceEndTime)"
+                }
+                runingTimeLabel.setContentLabel(contentText: time)
+                var submitDate: String {
+                    return "\(detailInfo.applicationStartDate)~\(detailInfo.applicationEndDate)"
+                }
+                submitScheduleLabel.setContentLabel(contentText: detailInfo.applicationStartDate)
+                var operationalDate: String {
+                    return "\(detailInfo.serviceStartDate)~\(detailInfo.serviceEndDate)"
+                }
+                operationalScheduleLabel.setContentLabel(contentText: operationalDate)
+                let isApplicationAble = detailInfo.isApplicationAble
+                let location = detailInfo.location
+                let tagType = detailInfo.wantedPeople
+//                let x = detailInfo.xcoordinate
+//                let y = detailInfo.ycoordinate
+                let cultureLink = detailInfo.cultureLink
+
+                detailInfoView.setting(
+                    isApplicationAble: isApplicationAble,
+                    location: location,
+                    tagType: tagType,
+//                    x: x,
+//                    y: y,
+                    cultureLink: cultureLink
+                )
+                self.id = detailInfo.id
+            }
+            .disposed(by: disposeBag)
+
+        output.reviewData.asObservable()
+            .bind(
+                to: reviewTableView.rx.items(
+                    cellIdentifier: ReviewTableViewCell.identifier,
+                    cellType: ReviewTableViewCell.self
+                )) { _, element, cell in
+                    cell.adapt(model: element)
+                }
+                .disposed(by: disposeBag)
+    }
 
     public override func configureViewController() {
-        reviewTableView.dataSource = self
-        reviewTableView.delegate = self
         reviewTableView.estimatedSectionHeaderHeight = 0
 
         detailInfoButton.rx.tap
@@ -261,38 +351,22 @@ class PlaceGuideDetailViewController: BaseViewController<PlaceGuideDetailViewMod
 
         bookmarkButton.rx.tap
             .subscribe(onNext: {
+                self.bookmarkButtonDidClicked.accept(self.id)
                 self.isActivateBookmark.toggle()
+            })
+            .disposed(by: disposeBag)
+
+        navigateToReviewButton.rx.tap
+            .subscribe(onNext: {
+                self.navigateToReviewButtonDidClicked.accept(())
             })
             .disposed(by: disposeBag)
     }
 
     public override func configureNavigation() {
-        
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        reviewTableView.reloadData()
-    }
-
-    func setDetailInfoButton() {
-        
-    }
-
-    func setReviewButton() {
-        
-    }
-}
-
-extension PlaceGuideDetailViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ReviewTableViewCell.identifier, for: indexPath) as! ReviewTableViewCell
-
-        return cell
-    }
-    
-    
+//    override func viewDidAppear(_ animated: Bool) {
+//        reviewTableView.reloadData()
+//    }
 }

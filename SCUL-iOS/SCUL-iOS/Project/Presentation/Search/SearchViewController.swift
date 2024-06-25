@@ -5,8 +5,10 @@ import SnapKit
 import Then
 
 class SearchViewController: BaseViewController<SearchViewModel> {
-    private let tableViewCellDidTap = PublishRelay<Void>()
-    let list = BehaviorRelay<[String]>(value: ["ㅁㄴㅇㅁㄴㅇ"])
+    private let tableViewCellDidTap = PublishRelay<String>()
+    private let bookmarkButtonDidClicked = PublishRelay<String>()
+    private let searchButtonDidTap = PublishRelay<String>()
+//    let list = BehaviorRelay<[String]>(value: ["ㅁㄴㅇㅁㄴㅇ"])
 
     private let searchImageView = UIImageView().then {
         $0.image = UIImage(systemName: "magnifyingglass")
@@ -28,10 +30,6 @@ class SearchViewController: BaseViewController<SearchViewModel> {
         $0.setImage(UIImage(systemName: "xmark"), for: .normal)
         $0.tintColor = UIColor.Gray500
     }
-//    private let xmarkImageView = UIImageView().then {
-//        $0.image = UIImage(systemName: "xmark")
-//        $0.tintColor = UIColor.Gray500
-//    }
 
     private let searchTableView = UITableView().then {
         $0.register(
@@ -92,28 +90,51 @@ class SearchViewController: BaseViewController<SearchViewModel> {
 
     public override func bind() {
         let input = SearchViewModel.Input(
-            tableViewCellDidTap: tableViewCellDidTap
+            viewAppear: self.viewDidLoadPublisher,
+            bookmarkButtonDidTap: bookmarkButtonDidClicked,
+            tableViewCellDidTap: tableViewCellDidTap,
+            searchButtonDidTap: searchButtonDidTap
         )
 
-        let _ = viewModel.transform(input)
+        let output = viewModel.transform(input)
+
+        output.cultureListData
+            .bind(
+                to: searchTableView.rx.items(
+                    cellIdentifier: SearchTableViewCell.identifier,
+                    cellType: SearchTableViewCell.self
+                )) { _, element, cell in
+                    cell.adapt(model: element)
+                    cell.bookmarkButtonDidTap = {
+                        self.bookmarkButtonDidClicked.accept((cell.model!.id))
+                    }
+                }
+                .disposed(by: disposeBag)
     }
 
     public override func configureViewController() {
-        searchTableView.dataSource = self
-        searchTableView.delegate = self
+        searchTextField.delegate = self
         searchTableView.allowsSelection = true
         searchTableView.estimatedSectionHeaderHeight = 0
 
-        list.asObservable()
-            .subscribe(onNext: {
-                self.emptySearchView.isHidden = !$0.isEmpty
-            })
-            .disposed(by: disposeBag)
+//        list.asObservable()
+//            .subscribe(onNext: {
+//                self.emptySearchView.isHidden = !$0.isEmpty
+//            })
+//            .disposed(by: disposeBag)
 
         xmarkButton.rx.tap
             .subscribe(onNext: {
                 self.searchTextField.text = ""
             })
+            .disposed(by: disposeBag)
+
+        searchTableView.rx.modelSelected(CultureListEntity.self)
+            .asObservable()
+            .map {
+                self.tableViewCellDidTap.accept($0.id)
+            }
+            .subscribe()
             .disposed(by: disposeBag)
     }
 
@@ -121,31 +142,26 @@ class SearchViewController: BaseViewController<SearchViewModel> {
         self.showTabbar()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        searchTableView.reloadData()
-    }
-
     public override func configureNavigation() {}
 }
 
-extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
-
-        cell.placeTitleLabel.text = "서울 장소장소"
-        cell.placeLocationLabel.text = "서울 뭐시기뭐시기 깽깽꺵"
-
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 셀을 클릭했을 때 발생하는 이벤트 처리
-        self.hideTabbar()
-        tableViewCellDidTap.accept(())
-        print("Selected cell at index: \(indexPath.item)")
-    }
+extension SearchViewController: UITextFieldDelegate {
+        public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            let title = textField.text
+    //        viewModel.searchText = title
+            searchButtonDidTap.accept(textField.text ?? "")
+            print("enter!")
+            self.view.endEditing(true)
+            return true
+        }
 }
+//extension SearchViewController: UITextFieldDelegate {
+//    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        let title = textField.text
+////        viewModel.searchText = title
+//        searchButtonDidTap.accept(textField.text ?? "")
+//        print("enter!")
+//        self.view.endEditing(true)
+//        return true
+//    }
+//}

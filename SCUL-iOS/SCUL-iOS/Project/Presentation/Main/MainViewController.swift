@@ -4,8 +4,10 @@ import Then
 import RxSwift
 import RxCocoa
 
-class MainViewController: BaseViewController<MainViewModel> {
-    private let collectionViewCellDidTap = PublishRelay<Void>()
+class MainViewController: BaseViewController<MainViewModel>, UICollectionViewDelegateFlowLayout {
+//    private let collectionViewCellDidTap = PublishRelay<Void>()
+    private let bookmarkButtonDidClicked = PublishRelay<String>()
+    private let collectionViewCellDidTap = PublishRelay<String>()
     private let logoImageView = UIImageView().then {
         $0.image = .SculLogo
     }
@@ -90,15 +92,36 @@ class MainViewController: BaseViewController<MainViewModel> {
 
     public override func bind() {
         let input = MainViewModel.Input(
+            viewAppear: self.viewDidLoadPublisher,
+            bookmarkButtonDidTap: bookmarkButtonDidClicked,
             collectionViewCellDidTap: collectionViewCellDidTap
         )
 
-        let _ = viewModel.transform(input)
+        let output = viewModel.transform(input)
+
+        output.cultureListData
+            .bind(
+                to: collectionView.rx.items(
+                    cellIdentifier: CollectionViewCustomCell.identifier,
+                    cellType: CollectionViewCustomCell.self
+                )) { _, element, cell in
+                    cell.adapt(model: element)
+                    cell.bookmarkButtonDidTap = {
+                        self.bookmarkButtonDidClicked.accept((cell.model!.id))
+                    }
+                }
+                .disposed(by: disposeBag)
     }
 
     public override func configureViewController() {
-        collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.rx.modelSelected(CultureListEntity.self)
+            .asObservable()
+            .map {
+                self.collectionViewCellDidTap.accept($0.id)
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
     }
 
     public override func viewWillAppear(_ animated: Bool) {
@@ -110,30 +133,8 @@ class MainViewController: BaseViewController<MainViewModel> {
             UIBarButtonItem(customView: logoImageView)
         ]
     }
-}
-
-extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCustomCell.identifier, for: indexPath) as! CollectionViewCustomCell
-        cell.layer.cornerRadius = 8
-        cell.layer.borderWidth = 0.5
-        cell.layer.borderColor = UIColor.Gray100.cgColor
-        return cell
-    }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let width = collectionView.frame.width
-            return CGSize(width: width, height: 110)
-        }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // 셀을 클릭했을 때 발생하는 이벤트 처리
-        self.hideTabbar()
-        collectionViewCellDidTap.accept(())
-        print("Selected cell at index: \(indexPath.item)")
+        return CGSize(width: 350, height: 110)
     }
 }

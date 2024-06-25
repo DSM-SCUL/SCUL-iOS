@@ -107,12 +107,19 @@ class MyPageViewController: BaseViewController<MyPageViewModel> {
 
     public override func bind() {
         let input = MyPageViewModel.Input(
+            viewAppear: self.viewDidLoadPublisher,
             myReviewButtonDidTap: myReviewButtonDidTap,
             bookmarkButtonDidTap: bookmarkButtonDidTap,
             logoutButtonDidTap: logoutButtonDidTap
         )
 
-        let _ = viewModel.transform(input)
+        let output = viewModel.transform(input)
+
+        output.myName.asObservable()
+            .bind(onNext: { 
+                self.nameLabel.text = $0.name
+            })
+            .disposed(by: disposeBag)
     }
 
     public override func configureViewController() {

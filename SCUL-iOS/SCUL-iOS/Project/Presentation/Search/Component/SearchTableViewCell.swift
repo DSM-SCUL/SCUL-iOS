@@ -4,9 +4,10 @@ import Then
 import RxSwift
 import RxCocoa
 
-class SearchTableViewCell: BaseTableViewCell<SearchViewModel> {
+class SearchTableViewCell: BaseTableViewCell<CultureListEntity> {
     static let identifier = "SearchTableViewCell"
     private var disposeBag = DisposeBag()
+    public var bookmarkButtonDidTap: (() -> Void)?
 
     private var isActivateBookmark = false {
         didSet {
@@ -37,6 +38,12 @@ class SearchTableViewCell: BaseTableViewCell<SearchViewModel> {
         isEnableReservation: true,
         isEnableCostFree: true
     )
+    private let typeTagButton = UIButton().then {
+        $0.buttonSetting(text: ".....", font: .body3, titleColor: .white)
+        $0.backgroundColor = .Main500
+        $0.contentEdgeInsets = UIEdgeInsets(top: 6, left: 10, bottom: 6, right: 10)
+        $0.layer.cornerRadius = 12
+    }
 
     override func addView() {
         [
@@ -44,7 +51,8 @@ class SearchTableViewCell: BaseTableViewCell<SearchViewModel> {
             placeTitleLabel,
             bookmarkButton,
             placeLocationLabel,
-            placeUseGuideLabel
+            placeUseGuideLabel,
+            typeTagButton
         ].forEach { contentView.addSubview($0) }
     }
 
@@ -70,7 +78,12 @@ class SearchTableViewCell: BaseTableViewCell<SearchViewModel> {
             $0.top.equalTo(placeLocationLabel.snp.bottom).offset(4)
             $0.leading.equalTo(placeTitleLabel.snp.leading)
         }
-
+        typeTagButton.snp.makeConstraints {
+            $0.height.equalTo(24)
+            $0.top.equalTo(placeUseGuideLabel.snp.bottom).offset(8)
+            $0.leading.equalTo(placeImageView.snp.trailing).offset(16)
+            $0.trailing.lessThanOrEqualToSuperview().inset(16)
+        }
         bookmarkButton.snp.makeConstraints {
             $0.width.height.equalTo(20)
             $0.top.equalToSuperview().inset(12)
@@ -79,10 +92,27 @@ class SearchTableViewCell: BaseTableViewCell<SearchViewModel> {
     }
 
     override func configureView() {
+        self.selectionStyle = .none
+
         bookmarkButton.rx.tap
             .subscribe(onNext: {
+                self.bookmarkButtonDidTap?()
                 self.isActivateBookmark.toggle()
             })
             .disposed(by: disposeBag)
+    }
+
+    public override func adapt(model: CultureListEntity) {
+        super.adapt(model: model)
+        let url = URL(string: model.imageUrl)!
+        placeImageView.loadImage(from: url)
+        placeTitleLabel.text = model.placeName
+        placeLocationLabel.text = model.location
+        placeUseGuideLabel = SculPlaceGuideLabel(
+            isEnableReservation: model.isApplicationAble,
+            isEnableCostFree: model.isApplicationAble
+        )
+        typeTagButton.setTitle(model.wantedPeople, for: .normal)
+        isActivateBookmark = model.isBookMarked
     }
 }

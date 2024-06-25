@@ -6,6 +6,7 @@ import Then
 
 class LoginViewController: BaseViewController<LoginViewModel> {
     private let loginButtonDidTap = PublishRelay<(String, String)>()
+    private let errorLabelPublish = PublishRelay<String>()
     private let navigateToSignupButtonDidTap = PublishRelay<Void>()
     private var isActivateEye = false {
         didSet {
@@ -34,6 +35,10 @@ class LoginViewController: BaseViewController<LoginViewModel> {
     private let passwordTextField = UITextField().then {
         $0.textFieldSetting(placeholder: "비밀번호", font: UIFont.caption2, isHide: true)
         $0.addLeftAndRightView()
+    }
+    private let errorLabel = UILabel().then {
+        $0.labelSetting(text: "", font: .body2)
+        $0.textColor = .Main800
     }
     private let eyesButton = UIButton().then {
         $0.setImage(.EyesOff, for: .normal)
@@ -74,7 +79,8 @@ class LoginViewController: BaseViewController<LoginViewModel> {
             passwordLabel,
             passwordTextField,
             eyesButton,
-            loginButton
+            loginButton,
+            errorLabel
         ].forEach { self.view.addSubview($0) }
 
         [
@@ -107,6 +113,10 @@ class LoginViewController: BaseViewController<LoginViewModel> {
             $0.top.equalTo(passwordLabel.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview().inset(25)
             $0.height.equalTo(40)
+        }
+        errorLabel.snp.makeConstraints {
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(8)
+            $0.trailing.equalToSuperview().inset(25)
         }
         eyesButton.snp.makeConstraints {
             $0.height.width.equalTo(20)
@@ -144,6 +154,12 @@ class LoginViewController: BaseViewController<LoginViewModel> {
         )
 
         let output = viewModel.transform(input)
+
+        output.errorDescription.asObservable()
+            .bind(onNext: { error in
+                self.errorLabel.text = error
+            })
+            .disposed(by: disposeBag)
     }
 
     public override func configureViewController() {
