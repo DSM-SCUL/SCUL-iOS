@@ -19,9 +19,3 @@ public struct SignupRequest: Encodable {
         case accountId, password, name
     }
 }
-
-//{
-//    "accountId" : "aasssdf1g",
-//    "password" : "addfasddd",
-//    "name" : "dfsdda"
-//}

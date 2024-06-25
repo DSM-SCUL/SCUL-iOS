@@ -2,7 +2,7 @@ import Foundation
 
 import RxSwift
 
-public class SignupUseCase {
+public class FetchMyNameUseCase {
 
     let usersRepository: UsersRepository
     
@@ -10,7 +10,7 @@ public class SignupUseCase {
         self.usersRepository = usersRepository
     }
 
-    public func execute(req: SignupRequest) -> Single<UsersEntity> {
-        return usersRepository.signup(req: req)
+    public func execute() -> Single<MyNameEntity> {
+        return usersRepository.fetchMyName()
     }
 }
