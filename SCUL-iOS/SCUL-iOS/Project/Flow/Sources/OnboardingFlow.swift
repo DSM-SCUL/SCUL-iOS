@@ -23,9 +23,6 @@ public final class OnboardingFlow: Flow {
         case .loginIsRequired:
             return navigateToLogin()
 
-        case .signupIsRequired: // 이거는 로그인Flow에만 있어도 될것 같은 부분.
-            return navigateToSignup()
-
         case .tabsIsRequired: // 이건 자동로그인 때문에 필요.
             return .end(forwardToParentFlowWithStep: AppStep.tabsIsRequired)
         }
@@ -57,22 +54,6 @@ private extension OnboardingFlow {
         return .one(flowContributor: .contribute(
             withNextPresentable: loginFlow,
             withNextStepper: OneStepper(withSingleStep: LoginStep.loginIsRequired)
-        ))
-    }
-
-    func navigateToSignup() -> FlowContributors {
-        let signupFlow = SignupFlow(container: container)
-
-        Flows.use(signupFlow, when: .created) { root in
-            self.rootViewController.pushViewController(
-                root,
-                animated: true
-            )
-        }
-
-        return .one(flowContributor: .contribute(
-            withNextPresentable: signupFlow,
-            withNextStepper: OneStepper(withSingleStep: SignupStep.signupIsRequired)
         ))
     }
 }

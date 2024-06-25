@@ -20,8 +20,8 @@ public final class MainFlow: Flow {
         case .mainIsRequired:
             return navigateToMain()
             
-        case .placeGuideDetailIsRequired:
-            return navigateToPlaceGuideDetail()
+        case let .placeGuideDetailIsRequired(id):
+            return navigateToPlaceGuideDetail(cultureDetailId: id)
         }
     }
 }
@@ -41,11 +41,13 @@ private extension MainFlow {
         ))
     }
 
-    func navigateToPlaceGuideDetail() -> FlowContributors {
+    func navigateToPlaceGuideDetail(cultureDetailId: String) -> FlowContributors {
         let placeGuideDetailFlow = PlaceGuideDetailFlow(container: container)
-        Flows.use(placeGuideDetailFlow, when: .created) { root in
+        Flows.use(placeGuideDetailFlow, when: .created) { (root) in
+            let view = root as? PlaceGuideDetailViewController
+            view?.viewModel.cultureDetailId = cultureDetailId
             self.rootViewController.pushViewController(
-                root,
+                view!,
                 animated: true
             )
         }

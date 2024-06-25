@@ -38,13 +38,28 @@ private extension PlaceGuideDetailFlow {
     func navigateToReview() -> FlowContributors {
         let reviewFlow = ReviewFlow(container: container)
 
-        Flows.use(reviewFlow, when: .created) { root in
-            self.rootViewController.navigationController?.pushViewController(root, animated: true)
+        Flows.use(reviewFlow, when: .created) { (root) in
+            let view = root as? ReviewViewController
+            self.rootViewController.navigationController?.pushViewController(
+                view!, animated: true
+            )
         }
 
         return .one(flowContributor: .contribute(
             withNextPresentable: reviewFlow,
-            withNextStepper: OneStepper(withSingleStep: ReviewStep.reviewIsRequired)
+            withNextStepper: OneStepper(
+                withSingleStep: ReviewStep.reviewIsRequired
+            )
         ))
+//        let reviewFlow = ReviewFlow(container: container)
+//
+//        Flows.use(reviewFlow, when: .created) { root in
+//            self.rootViewController.navigationController?.pushViewController(root, animated: true)
+//        }
+//
+//        return .one(flowContributor: .contribute(
+//            withNextPresentable: reviewFlow,
+//            withNextStepper: OneStepper(withSingleStep: ReviewStep.reviewIsRequired)
+//        ))
     }
 }

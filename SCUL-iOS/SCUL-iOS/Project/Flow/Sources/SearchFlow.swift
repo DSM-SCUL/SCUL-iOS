@@ -20,8 +20,8 @@ public final class SearchFlow: Flow {
         case .searchIsRequired:
             return navigateToSearch()
 
-        case .placeGuideDetailIsRequired:
-            return navigateToPlaceGuideDetail()
+        case let .placeGuideDetailIsRequired(id):
+            return navigateToPlaceGuideDetail(cultureDetailId: id)
         }
     }
 }
@@ -41,11 +41,16 @@ private extension SearchFlow {
         ))
     }
 
-    func navigateToPlaceGuideDetail() -> FlowContributors {
+    func navigateToPlaceGuideDetail(cultureDetailId: String) -> FlowContributors {
         let placeGuideDetailFlow = PlaceGuideDetailFlow(container: container)
 
-        Flows.use(placeGuideDetailFlow, when: .created) { root in
-            self.rootViewController.pushViewController(root, animated: true)
+        Flows.use(placeGuideDetailFlow, when: .created) { (root) in
+            let view = root as? PlaceGuideDetailViewController
+            view?.viewModel.cultureDetailId = cultureDetailId
+            self.rootViewController.pushViewController(
+                view!,
+                animated: true
+            )
         }
 
         return .one(flowContributor: .contribute(

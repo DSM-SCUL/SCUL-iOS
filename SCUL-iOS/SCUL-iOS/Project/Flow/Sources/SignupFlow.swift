@@ -25,7 +25,8 @@ public final class SignupFlow: Flow {
             return navigateToLogin()
 
         case .tabsIsRequired:
-            return .end(forwardToParentFlowWithStep: SignupStep.tabsIsRequired)
+            print("tabsIsRequired")
+            return .end(forwardToParentFlowWithStep: OnboardingStep.tabsIsRequired)
         }
     }
 }
