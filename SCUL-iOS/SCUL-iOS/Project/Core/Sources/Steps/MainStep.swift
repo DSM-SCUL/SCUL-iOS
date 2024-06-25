@@ -2,5 +2,5 @@ import RxFlow
 
 public enum MainStep: Step {
     case mainIsRequired
-    case placeGuideDetailIsRequired
+    case placeGuideDetailIsRequired(cultureDetailId: String)
 }
