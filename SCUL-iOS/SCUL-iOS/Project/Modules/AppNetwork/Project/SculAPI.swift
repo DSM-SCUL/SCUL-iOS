@@ -31,7 +31,7 @@ public extension SculAPI {
 public enum SculDomain: String {
     case users
     case reviews
-    case bookMarks
+    case bookmarks
     case cultures
 }
 
