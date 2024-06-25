@@ -8,10 +8,11 @@ target 'SCUL-iOS' do
   # Pods for SCUL-iOS
   pod 'Alamofire'
   pod 'Kingfisher'
-  pod 'Moya'
+  pod 'Moya/RxSwift'
   pod 'RxSwift'
   pod 'RxFlow'
   pod 'SnapKit'
   pod 'Then'
   pod 'KeychainSwift'
+  pod 'Swinject'
 end
