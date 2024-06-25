@@ -10,5 +10,23 @@ public final class RepositoryAssembly: Assembly {
                 remoteUsersDataSource: resolver.resolve(RemoteUsersDataSource.self)!
             )
         }
+
+        container.register(CulturesRepository.self) { resolver in
+            CulturesRepositoryImpl(
+                remoteCulturesDataSource: resolver.resolve(RemoteCulturesDataSource.self)!
+            )
+        }
+
+        container.register(BookmarksRepository.self) { resolver in
+            BookmarksRepositoryImpl(
+                remoteBookmarksDataSource: resolver.resolve(RemoteBookmarksDataSource.self)!
+            )
+        }
+
+        container.register(ReviewsRepository.self) { resolver in
+            ReviewsRepositoryImpl(
+                remoteReviewsDataSource: resolver.resolve(RemoteReviewsDataSource.self)!
+            )
+        }
     }
 }

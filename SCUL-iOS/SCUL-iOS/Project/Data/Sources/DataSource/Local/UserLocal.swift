@@ -13,8 +13,6 @@ public struct LocalUsersDataSourceImpl: LocalUsersDataSource {
 
     public func clearTokens() {
         keychain.delete(type: .accessToken)
-        keychain.delete(type: .accessExpiresAt)
         keychain.delete(type: .refreshToken)
-        keychain.delete(type: .refreshExpiresAt)
     }
 }

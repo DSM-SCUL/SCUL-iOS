@@ -64,37 +64,10 @@ private extension RemoteBaseDataSource {
     }
 
     func requestWithAccessToken(_ api: API) -> Single<Response> {
-        return .deferred {
-            if self.checkTokenIsValid() {
-                return self.defaultRequest(api)
-            } else {
-                return .error(TokenError.expired)
-            }
-        }
-//        .retry(when: { (errorObservable: Observable<TokenError>) in
-//            return errorObservable
-//                .flatMap { error -> Observable<Void> in
-//                    switch error {
-//                    case .expired:
-//                        return self.reissueToken()
-//                            .andThen(.just(()))
-//                    }
-//                }
-//        })
+        return self.defaultRequest(api)
     }
 
     func isApiNeedsAccessToken(_ api: API) -> Bool {
         return api.jwtTokenType == .accessToken
     }
-
-    func checkTokenIsValid() -> Bool {
-        let expired = keychain.load(type: .accessExpiresAt).toSculDate()
-        print(Date(), expired)
-        return Date() < expired
-    }
-//
-//    func reissueToken() -> Completable {
-//        return RemoteAuthDataSourceImpl(keychain: keychain).reissueToken()
-//            .asCompletable()
-//    }
 }

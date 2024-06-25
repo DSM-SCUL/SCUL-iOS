@@ -11,7 +11,11 @@ struct UsersRepositoryImpl: UsersRepository {
         remoteUsersDataSource.login(req: req)
     }
 
-//    func signup(accountId: String, password: String, name: String) -> RxSwift.Completable {
-//        remoteUsersDataSource.
-//    }
+    func signup(req: SignupRequest) -> RxSwift.Single<UsersEntity> {
+        remoteUsersDataSource.signup(req: req)
+    }
+
+    func fetchMyName() -> RxSwift.Single<MyNameEntity> {
+        remoteUsersDataSource.fetchMyName()
+    }
 }
